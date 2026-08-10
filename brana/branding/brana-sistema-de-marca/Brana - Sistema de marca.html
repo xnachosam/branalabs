@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brana — Sistema de marca · Estrato v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Syne:wght@600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/brana-tokens.css">
+<link rel="stylesheet" href="css/brana-ui.css">
+<link rel="stylesheet" href="css/guidelines.css">
+</head>
+<body>
+
+<aside class="side">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <span class="stack" style="--s: 26px;"><i></i><i class="a"></i><i></i></span>
+    <span class="wm" style="font-size: 22px;">Brana</span>
+  </div>
+  <nav class="side-nav">
+    <a href="#logo"><span class="n">01</span>Logo y uso</a>
+    <a href="#color"><span class="n">02</span>Color y estados</a>
+    <a href="#tipografia"><span class="n">03</span>Tipografía</a>
+    <a href="#espaciado"><span class="n">04</span>Espaciado y elevación</a>
+    <a href="#motivo"><span class="n">05</span>Motivo Estrato</a>
+    <a href="#iconografia"><span class="n">06</span>Iconografía</a>
+    <a href="#componentes"><span class="n">07</span>Componentes UI</a>
+    <a href="#voz"><span class="n">08</span>Tono de voz</a>
+    <a href="#implementacion"><span class="n">09</span>Implementación</a>
+  </nav>
+  <div class="side-meta">
+    <p class="t-label">Estrato · v1</p>
+    <p class="t-caption">Junio 2026 · branalabs.com</p>
+  </div>
+</aside>
+
+<main>
+
+<header class="page-hero" data-screen-label="Portada">
+  <div>
+    <p class="t-label" style="color: var(--accent-hover); margin-bottom: var(--s4);">Sistema de marca · v1</p>
+    <h1 class="t-display">Capas de producto.<br>Una sola base.</h1>
+    <p class="t-body-lg" style="margin-top: var(--s5); max-width: 520px;">Brana desarrolla y opera SaaS verticales. Este documento consolida la dirección <strong style="color: var(--text); font-weight: 600;">Estrato</strong> en un sistema implementable: tokens, componentes, motivo gráfico y voz.</p>
+  </div>
+  <span class="stack" style="--s: 150px;"><i></i><i class="a"></i><i></i></span>
+</header>
+
+<!-- ============ 01 LOGO ============ -->
+<section id="logo" data-screen-label="01 Logo y uso">
+  <div class="sec-head">
+    <span class="t-label">01</span>
+    <h2 class="t-h2">Logo y uso</h2>
+    <p class="t-body-lg">El isotipo es una pila de tres capas isométricas — los productos — con la capa media en Índigo Brana: la matriz que los sostiene. El wordmark es "Brana" en Space Grotesk 700, tracking −3%.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="tile" style="height: 170px; grid-column: span 2;">
+      <div style="display: flex; align-items: center; gap: 22px;">
+        <span class="stack" style="--s: 56px;"><i></i><i class="a"></i><i></i></span>
+        <span class="wm" style="font-size: 52px;">Brana</span>
+      </div>
+      <span class="tile-label">Lockup principal</span>
+    </div>
+    <div class="tile" style="height: 170px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+        <span class="stack" style="--s: 44px;"><i></i><i class="a"></i><i></i></span>
+        <span class="wm" style="font-size: 24px;">Brana</span>
+      </div>
+      <span class="tile-label">Vertical</span>
+    </div>
+  </div>
+
+  <div class="grid-4" style="margin-top: var(--s4);">
+    <div class="tile" style="height: 130px;">
+      <span class="wm" style="font-size: 34px;">Brana</span>
+      <span class="tile-label">Wordmark solo</span>
+    </div>
+    <div class="tile" style="height: 130px;">
+      <div class="row" style="gap: 18px;">
+        <span class="stack" style="--s: 32px;"><i></i><i class="a"></i><i></i></span>
+        <span class="stack" style="--s: 16px;"><i></i><i class="a"></i><i></i></span>
+      </div>
+      <span class="tile-label">Favicon 32 / 16</span>
+    </div>
+    <div class="tile" style="height: 130px;">
+      <span class="stack" style="--s: 40px;"><i style="background: #F2F3F8;"></i><i style="background: #F2F3F8;"></i><i style="background: #F2F3F8;"></i></span>
+      <span class="tile-label">Mono blanco</span>
+    </div>
+    <div class="tile tile-light" style="height: 130px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="stack" style="--s: 28px;"><i style="background: #14161D;"></i><i style="background: #5443C9;"></i><i style="background: #14161D;"></i></span>
+        <span class="wm" style="font-size: 26px; color: #14161D;">Brana</span>
+      </div>
+      <span class="tile-label">Sobre fondo claro</span>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Área de seguridad y tamaños mínimos</span>
+  <div class="grid-2">
+    <div class="tile" style="height: 200px;">
+      <div class="clear-space">
+        <span class="x-mark" style="top: 8px; left: 50%; transform: translateX(-50%);">1×</span>
+        <span class="x-mark" style="bottom: 8px; left: 50%; transform: translateX(-50%);">1×</span>
+        <span class="x-mark" style="left: 10px; top: 50%; transform: translateY(-50%);">1×</span>
+        <span class="x-mark" style="right: 10px; top: 50%; transform: translateY(-50%);">1×</span>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span class="stack" style="--s: 36px;"><i></i><i class="a"></i><i></i></span>
+          <span class="wm" style="font-size: 32px;">Brana</span>
+        </div>
+      </div>
+      <span class="tile-label">1× = alto de una capa del isotipo</span>
+    </div>
+    <div class="tile" style="height: 200px;">
+      <div class="col" style="gap: var(--s3); align-items: flex-start;">
+        <p class="t-data"><span style="color: var(--text);">Lockup</span> · mínimo 96 px de ancho</p>
+        <p class="t-data"><span style="color: var(--text);">Wordmark</span> · mínimo 56 px de ancho</p>
+        <p class="t-data"><span style="color: var(--text);">Isotipo</span> · mínimo 16 px</p>
+        <p class="t-data" style="color: var(--text-3);">Por debajo de 24 px, usar solo el isotipo.</p>
+      </div>
+      <span class="tile-label">Tamaños mínimos</span>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Qué no hacer</span>
+  <div class="grid-3">
+    <div>
+      <div class="tile dont" style="height: 110px;">
+        <span class="stack" style="--s: 36px;"><i style="background: var(--accent);"></i><i style="background: var(--accent);"></i><i style="background: var(--accent);"></i></span>
+      </div>
+      <p class="dont-caption">No recolorear todas las capas — solo la media lleva índigo</p>
+    </div>
+    <div>
+      <div class="tile dont" style="height: 110px;">
+        <span class="stack" style="--s: 36px; transform: rotate(24deg);"><i></i><i class="a"></i><i></i></span>
+      </div>
+      <p class="dont-caption">No rotar ni inclinar el isotipo</p>
+    </div>
+    <div>
+      <div class="tile dont" style="height: 110px;">
+        <span class="wm" style="font-size: 30px; transform: scaleX(1.45); letter-spacing: 0.04em;">Brana</span>
+      </div>
+      <p class="dont-caption">No estirar ni alterar el tracking del wordmark</p>
+    </div>
+    <div>
+      <div class="tile dont" style="height: 110px;">
+        <span class="wm" style="font-size: 30px; text-shadow: 0 0 18px rgba(106, 91, 234, 0.9);">Brana</span>
+      </div>
+      <p class="dont-caption">No aplicar sombras, glows ni degradados</p>
+    </div>
+    <div>
+      <div class="tile dont" style="height: 110px; background: #3A4060;">
+        <span class="wm" style="font-size: 30px; color: #5C616F;">Brana</span>
+      </div>
+      <p class="dont-caption">No usar sobre fondos de bajo contraste</p>
+    </div>
+    <div>
+      <div class="tile dont" style="height: 110px;">
+        <span class="wm" style="font-size: 26px;">Brana <span style="font-weight: 500; font-size: 14px; letter-spacing: 0.2em; color: var(--text-3);">LABS</span></span>
+      </div>
+      <p class="dont-caption">No volver a "Brana Labs" — la marca es Brana</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 COLOR ============ -->
+<section id="color" data-screen-label="02 Color y estados">
+  <div class="sec-head">
+    <span class="t-label">02</span>
+    <h2 class="t-h2">Color y estados</h2>
+    <p class="t-body-lg">Base neutra fría, un solo acento. Los colores de estado comparten la saturación contenida del índigo — nada de verdes y rojos genéricos a plena potencia.</p>
+  </div>
+
+  <span class="t-label sub-label">Base · dark (default)</span>
+  <div class="grid-4">
+    <div class="swatch"><div class="swatch-chip" style="background: #0B0C10;"></div><div class="swatch-name">Fondo<span class="hex">#0B0C10</span></div><div class="swatch-use">--bg · fondo principal</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #14161D;"></div><div class="swatch-name">Superficie<span class="hex">#14161D</span></div><div class="swatch-use">--surface · cards, paneles</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #1B1E28;"></div><div class="swatch-name">Superficie 2<span class="hex">#1B1E28</span></div><div class="swatch-use">--surface-2 · hover, wells</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #242836;"></div><div class="swatch-name">Borde<span class="hex">#242836</span></div><div class="swatch-use">--border · divisores</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #F2F3F8;"></div><div class="swatch-name">Texto<span class="hex">#F2F3F8</span></div><div class="swatch-use">--text · títulos, énfasis</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #9BA0AE;"></div><div class="swatch-name">Texto 2<span class="hex">#9BA0AE</span></div><div class="swatch-use">--text-2 · body</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #5C616F;"></div><div class="swatch-name">Texto 3<span class="hex">#5C616F</span></div><div class="swatch-use">--text-3 · metadatos</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #343A4C;"></div><div class="swatch-name">Borde fuerte<span class="hex">#343A4C</span></div><div class="swatch-use">--border-strong · inputs</div></div>
+  </div>
+
+  <span class="t-label sub-label">Acento · Índigo Brana</span>
+  <div class="grid-4">
+    <div class="swatch"><div class="swatch-chip" style="background: #6A5BEA;"></div><div class="swatch-name">Índigo<span class="hex">#6A5BEA</span></div><div class="swatch-use">--accent · CTAs, foco, capa media</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #8B7FEF;"></div><div class="swatch-name">Hover<span class="hex">#8B7FEF</span></div><div class="swatch-use">--accent-hover · también links</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #5645D0;"></div><div class="swatch-name">Active<span class="hex">#5645D0</span></div><div class="swatch-use">--accent-active · pressed</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: rgba(106, 91, 234, 0.14);"></div><div class="swatch-name">Soft<span class="hex">14%</span></div><div class="swatch-use">--accent-soft · fondos selección</div></div>
+  </div>
+
+  <span class="t-label sub-label">Estados</span>
+  <div class="grid-4">
+    <div class="swatch"><div class="swatch-chip" style="background: #4CB782;"></div><div class="swatch-name">Éxito<span class="hex">#4CB782</span></div><div class="swatch-use">--success · confirmaciones (soft 13%)</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #E25D6E;"></div><div class="swatch-name">Error<span class="hex">#E25D6E</span></div><div class="swatch-use">--error · destructivo, validación</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #D9963C;"></div><div class="swatch-name">Warning<span class="hex">#D9963C</span></div><div class="swatch-use">--warning · avisos</div></div>
+    <div class="swatch"><div class="swatch-chip" style="background: #4D9FDB;"></div><div class="swatch-name">Info<span class="hex">#4D9FDB</span></div><div class="swatch-use">--info · notas neutrales</div></div>
+  </div>
+
+  <span class="t-label sub-label">Focus · disabled · overlay</span>
+  <div class="grid-3">
+    <div class="tile" style="height: 120px;">
+      <input class="input is-focus" style="width: 70%;" value="Foco visible" readonly>
+      <span class="tile-label">--focus-ring · 3px índigo 35%</span>
+    </div>
+    <div class="tile" style="height: 120px;">
+      <button class="btn is-disabled">Deshabilitado</button>
+      <span class="tile-label">--disabled-fg / --disabled-bg</span>
+    </div>
+    <div class="tile" style="height: 120px;">
+      <div style="position: absolute; inset: 0; background: var(--overlay);"></div>
+      <span class="t-data" style="position: relative; color: var(--text);">Scrim para modales</span>
+      <span class="tile-label" style="z-index: 1;">--overlay · negro azulado 65%</span>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Light mode</span>
+  <div data-theme="light" class="tile" style="background: #F7F8FB; padding: var(--s5); display: block;">
+    <div class="grid-4">
+      <div class="swatch"><div class="swatch-chip" style="background: #F7F8FB;"></div><div class="swatch-name" style="color: #14161D;">Fondo<span class="hex" style="color: #686E7E;">#F7F8FB</span></div><div class="swatch-use" style="color: #9BA0AE;">--bg</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background: #FFFFFF;"></div><div class="swatch-name" style="color: #14161D;">Superficie<span class="hex" style="color: #686E7E;">#FFFFFF</span></div><div class="swatch-use" style="color: #9BA0AE;">--surface</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background: #5443C9;"></div><div class="swatch-name" style="color: #14161D;">Índigo claro<span class="hex" style="color: #686E7E;">#5443C9</span></div><div class="swatch-use" style="color: #9BA0AE;">--accent · contraste AA</div></div>
+      <div class="swatch"><div class="swatch-chip" style="background: #14161D;"></div><div class="swatch-name" style="color: #14161D;">Texto<span class="hex" style="color: #686E7E;">#14161D</span></div><div class="swatch-use" style="color: #9BA0AE;">--text</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 TIPOGRAFÍA ============ -->
+<section id="tipografia" data-screen-label="03 Tipografía">
+  <div class="sec-head">
+    <span class="t-label">03</span>
+    <h2 class="t-h2">Tipografía</h2>
+    <p class="t-body-lg">Space Grotesk para la voz de marca (wordmark, headings), Hanken Grotesk para trabajar (body, UI), IBM Plex Mono para datos y etiquetas. Tres familias, cero adornos.</p>
+  </div>
+
+  <div class="type-row" style="border-top: none;">
+    <div class="type-meta"><p class="t-label">Display · 64/1.05</p><p class="t-caption">Space Grotesk 700 · −3%</p></div>
+    <p class="type-sample t-display" style="font-size: 52px;">Capas de producto</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">H1 · 48/1.08</p><p class="t-caption">Space Grotesk 700 · −2.5%</p></div>
+    <p class="type-sample t-h1" style="font-size: 42px;">Una sola base técnica</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">H2 · 32/1.15</p><p class="t-caption">Space Grotesk 700 · −2%</p></div>
+    <p class="type-sample t-h2">Productos verticales, matriz común</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">H3 · 24/1.25</p><p class="t-caption">Space Grotesk 600 · −1.5%</p></div>
+    <p class="type-sample t-h3">Operado con precisión desde Argentina</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">H4 · 18/1.35</p><p class="t-caption">Space Grotesk 600 · −1%</p></div>
+    <p class="type-sample t-h4">Subtítulos de card y grupos de formulario</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">Body L · 18/1.6</p><p class="t-caption">Hanken Grotesk 400</p></div>
+    <p class="type-sample t-body-lg">Intros y párrafos destacados de la landing.</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">Body · 16/1.6</p><p class="t-caption">Hanken Grotesk 400</p></div>
+    <p class="type-sample t-body">Brana desarrolla y opera SaaS verticales. Cada producto con identidad propia.</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">Small · 14/1.5</p><p class="t-caption">Hanken Grotesk 400</p></div>
+    <p class="type-sample t-small">Texto secundario, ayudas de formulario, navegación.</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">Caption · 12.5/1.4</p><p class="t-caption">Hanken Grotesk 500</p></div>
+    <p class="type-sample t-caption">Metadatos, timestamps, pies de imagen.</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">Label · 12</p><p class="t-caption">IBM Plex Mono 500 · +8% · caps</p></div>
+    <p class="type-sample t-label">Eyebrows · Etiquetas de sección · Badges</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">Data · 13</p><p class="t-caption">IBM Plex Mono 400</p></div>
+    <p class="type-sample t-data">branalabs.com/atalaya — 1.420 pólizas · v2.3.1</p>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">Botón · 15 / 13.5</p><p class="t-caption">Hanken Grotesk 600</p></div>
+    <div class="row"><button class="btn">Botón base</button><button class="btn btn-secondary btn-sm">Botón sm</button></div>
+  </div>
+  <div class="type-row">
+    <div class="type-meta"><p class="t-label">Link</p><p class="t-caption">índigo hover · subrayado al hover · sin visited</p></div>
+    <p class="type-sample t-body"><a class="link" href="#tipografia">Link default</a> · <a class="link is-hover" href="#tipografia">Link hover</a> · <a class="link is-focus" href="#tipografia">Link foco</a></p>
+  </div>
+</section>
+
+<!-- ============ 04 ESPACIADO ============ -->
+<section id="espaciado" data-screen-label="04 Espaciado y elevación">
+  <div class="sec-head">
+    <span class="t-label">04</span>
+    <h2 class="t-h2">Espaciado, radios y elevación</h2>
+    <p class="t-body-lg">Base 4px. Radios contenidos — la marca es de aristas vivas; el redondeo es funcional, no decorativo. Las sombras en dark mode combinan oscuridad y un borde sutil para despegar superficies del fondo.</p>
+  </div>
+
+  <span class="t-label sub-label">Escala de espaciado · base 4px</span>
+  <div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s1</span><div class="space-bar" style="width: 4px;"></div><span class="t-caption">4 · gaps mínimos</span></div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s2</span><div class="space-bar" style="width: 8px;"></div><span class="t-caption">8 · interior de chips</span></div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s3</span><div class="space-bar" style="width: 12px;"></div><span class="t-caption">12 · gaps de listas</span></div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s4</span><div class="space-bar" style="width: 16px;"></div><span class="t-caption">16 · padding base</span></div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s5</span><div class="space-bar" style="width: 24px;"></div><span class="t-caption">24 · interior de cards</span></div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s6</span><div class="space-bar" style="width: 32px;"></div><span class="t-caption">32 · entre grupos</span></div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s7</span><div class="space-bar" style="width: 48px;"></div><span class="t-caption">48 · entre bloques</span></div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s8</span><div class="space-bar" style="width: 64px;"></div><span class="t-caption">64 · márgenes de sección</span></div>
+    <div class="space-row"><span class="t-label" style="width: 64px;">--s9</span><div class="space-bar" style="width: 96px;"></div><span class="t-caption">96 · respiración entre secciones</span></div>
+  </div>
+
+  <span class="t-label sub-label">Radios</span>
+  <div class="row" style="gap: var(--s6); align-items: flex-end;">
+    <div class="col" style="gap: var(--s2); align-items: center;"><div class="radius-demo" style="border-radius: 4px;"></div><p class="t-caption">--r-sm 4 · badges</p></div>
+    <div class="col" style="gap: var(--s2); align-items: center;"><div class="radius-demo" style="border-radius: 6px;"></div><p class="t-caption">--r-md 6 · botones, inputs</p></div>
+    <div class="col" style="gap: var(--s2); align-items: center;"><div class="radius-demo" style="border-radius: 10px;"></div><p class="t-caption">--r-lg 10 · cards, modales</p></div>
+    <div class="col" style="gap: var(--s2); align-items: center;"><div class="radius-demo" style="border-radius: 999px; width: 64px;"></div><p class="t-caption">--r-full · pills, avatares</p></div>
+  </div>
+
+  <span class="t-label sub-label">Elevación · sobre #0B0C10</span>
+  <div class="grid-4">
+    <div class="col" style="gap: var(--s2);"><div class="shadow-demo" style="box-shadow: var(--e1);"></div><p class="t-caption">--e1 · cards en reposo</p></div>
+    <div class="col" style="gap: var(--s2);"><div class="shadow-demo" style="box-shadow: var(--e2);"></div><p class="t-caption">--e2 · hover, dropdowns</p></div>
+    <div class="col" style="gap: var(--s2);"><div class="shadow-demo" style="box-shadow: var(--e3);"></div><p class="t-caption">--e3 · modales</p></div>
+    <div class="col" style="gap: var(--s2);"><div class="shadow-demo" style="box-shadow: var(--e-accent);"></div><p class="t-caption">--e-accent · destacado de marca</p></div>
+  </div>
+</section>
+
+<!-- ============ 05 MOTIVO ============ -->
+<section id="motivo" data-screen-label="05 Motivo Estrato">
+  <div class="sec-head">
+    <span class="t-label">05</span>
+    <h2 class="t-h2">Motivo Estrato</h2>
+    <p class="t-body-lg">La pila isométrica es el sistema gráfico de la marca, no una imagen fija. Reglas: 2 a 5 capas, desfase vertical constante (17% del tamaño), una sola capa en color — índigo para Brana, el color del producto cuando habla un producto.</p>
+  </div>
+
+  <span class="t-label sub-label">Variaciones permitidas</span>
+  <div class="grid-4">
+    <div class="tile" style="height: 150px;">
+      <span class="stack" style="--s: 64px;"><i></i><i class="a"></i><i></i></span>
+      <span class="tile-label">Canónica · 3 capas</span>
+    </div>
+    <div class="tile" style="height: 150px;">
+      <span class="stack" style="--s: 56px; height: 76px;"><i></i><i></i><i class="a"></i><i></i></span>
+      <span class="tile-label">Profunda · 4–5 capas</span>
+    </div>
+    <div class="tile" style="height: 150px;">
+      <span class="stack" style="--s: 64px; height: 48px;"><i class="a"></i><i></i></span>
+      <span class="tile-label">Mínima · 2 capas</span>
+    </div>
+    <div class="tile" style="height: 150px;">
+      <span class="stack" style="--s: 64px;"><i class="ghost"></i><i class="a"></i><i class="ghost"></i></span>
+      <span class="tile-label">Contorno · fondos sutiles</span>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Hero de landing · composición</span>
+  <div class="tile" style="min-height: 300px; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s6); padding: var(--s7); background: var(--bg);">
+    <div style="max-width: 460px; min-width: 280px; flex: 1;">
+      <p class="t-label" style="color: var(--accent-hover); margin-bottom: var(--s3);">Brana — Casa matriz de software</p>
+      <h3 class="t-h1" style="font-size: 40px;">Capas de producto. Una sola base.</h3>
+      <div class="row" style="margin-top: var(--s5);"><button class="btn">Ver productos</button><button class="btn btn-secondary">Hablemos</button></div>
+    </div>
+    <div style="position: relative; width: 230px; height: 190px; flex-shrink: 0;">
+      <span class="stack" style="--s: 175px; position: absolute; right: 0; top: 0;"><i></i><i class="a"></i><i></i></span>
+      <span class="stack" style="--s: 70px; position: absolute; left: 0; bottom: 0; opacity: 0.25;"><i></i><i></i></span>
+    </div>
+    <span class="tile-label">La pila grande + un eco menor al 25% — nunca más de dos pilas por composición</span>
+  </div>
+
+  <span class="t-label sub-label">Separador de sección</span>
+  <div style="padding: var(--s4) 0;">
+    <div class="sep"><span class="stack"><i></i><i class="a"></i><i></i></span></div>
+  </div>
+
+  <div class="grid-3" style="margin-top: var(--s5);">
+    <div class="tile" style="height: 190px;">
+      <div class="col" style="gap: var(--s3); align-items: center;">
+        <div class="row" style="gap: var(--s4);">
+          <div style="width: 64px; height: 64px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; display: flex; align-items: center; justify-content: center;">
+            <span class="stack" style="--s: 34px;"><i></i><i style="background: #3db897;"></i><i></i></span>
+          </div>
+          <div style="width: 64px; height: 64px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; display: flex; align-items: center; justify-content: center;">
+            <span class="stack" style="--s: 34px;"><i></i><i class="a"></i><i></i></span>
+          </div>
+        </div>
+        <p class="t-caption" style="text-align: center;">La capa media toma el color del producto:<br>Atalaya verde, Brana índigo</p>
+      </div>
+      <span class="tile-label">Iconos de producto</span>
+    </div>
+    <div class="tile" style="height: 190px;">
+      <div class="col" style="gap: var(--s3); align-items: center;">
+        <span class="stack" style="--s: 44px;"><i class="ghost"></i><i class="ghost"></i><i class="ghost"></i></span>
+        <p class="t-small" style="color: var(--text); font-weight: 600;">Todavía no hay pólizas</p>
+        <p class="t-caption">Importá tu cartera para empezar.</p>
+      </div>
+      <span class="tile-label">Empty state · pila en contorno</span>
+    </div>
+    <div class="tile" style="height: 190px;">
+      <div class="col" style="gap: var(--s4); align-items: center;">
+        <span class="stack stack-loader" style="--s: 44px;"><i></i><i class="a"></i><i></i></span>
+        <p class="t-caption">Cargando…</p>
+      </div>
+      <span class="tile-label">Loader · las capas respiran en secuencia</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 ICONOGRAFÍA ============ -->
+<section id="iconografia" data-screen-label="06 Iconografía">
+  <div class="sec-head">
+    <span class="t-label">06</span>
+    <h2 class="t-h2">Iconografía</h2>
+    <p class="t-body-lg">Grilla de 24px, trazo de 1.75px, terminales rectos, esquinas vivas — la misma geometría seca de Space Grotesk. Sin rellenos salvo puntos de énfasis. Color: heredan el del texto; nunca multicolor.</p>
+  </div>
+  <div class="icon-grid">
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><path d="M12 3 21 8 12 13 3 8Z"></path><path d="M21 12 12 17 3 12"></path><path d="M21 16 12 21 3 16"></path></svg><p class="t-caption">capas</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><rect x="4" y="4" width="16" height="16"></rect><path d="M4 9h16"></path></svg><p class="t-caption">producto</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><path d="M4 12h14"></path><path d="M13 6l6 6-6 6"></path></svg><p class="t-caption">flecha</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><path d="M5 13l4 4L19 7"></path></svg><p class="t-caption">check</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><path d="M12 5v14M5 12h14"></path></svg><p class="t-caption">agregar</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><circle cx="11" cy="11" r="6"></circle><path d="M15.5 15.5 20 20"></path></svg><p class="t-caption">buscar</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><path d="M12 3 22 20H2Z"></path><path d="M12 10v4"></path><path d="M12 16.5v.5"></path></svg><p class="t-caption">alerta</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 7.5v.5"></path></svg><p class="t-caption">info</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><path d="M4 8h16M4 16h16"></path><circle cx="9" cy="8" r="2.4" fill="var(--surface)"></circle><circle cx="15" cy="16" r="2.4" fill="var(--surface)"></circle></svg><p class="t-caption">ajustes</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c2-3.5 5-5 8-5s6 1.5 8 5"></path></svg><p class="t-caption">cuenta</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><rect x="4" y="4" width="7" height="7"></rect><rect x="13" y="4" width="7" height="7"></rect><rect x="4" y="13" width="7" height="7"></rect><rect x="13" y="13" width="7" height="7"></rect></svg><p class="t-caption">panel</p></div>
+    <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"><path d="M9 5H5v14h14v-4"></path><path d="M13 5h6v6"></path><path d="M19 5l-8 8"></path></svg><p class="t-caption">externo</p></div>
+  </div>
+</section>
+
+<!-- ============ 07 COMPONENTES ============ -->
+<section id="componentes" data-screen-label="07 Componentes UI">
+  <div class="sec-head">
+    <span class="t-label">07</span>
+    <h2 class="t-h2">Componentes UI</h2>
+    <p class="t-body-lg">Base mínima para branalabs.com y superficies corporativas. Cada componente vive en <span class="t-data" style="font-size: 14px;">css/brana-ui.css</span> y responde a los tokens — cambiar un token recolorea todo.</p>
+  </div>
+
+  <span class="t-label sub-label">Botones · estados</span>
+  <div class="demo-panel">
+    <div class="state-grid">
+      <p class="t-caption"></p><p class="t-caption">default</p><p class="t-caption">hover</p><p class="t-caption">focus</p><p class="t-caption">disabled</p>
+      <p class="t-caption">Primario</p>
+      <button class="btn">Ver productos</button><button class="btn is-hover">Ver productos</button><button class="btn is-focus">Ver productos</button><button class="btn is-disabled">Ver productos</button>
+      <p class="t-caption">Secundario</p>
+      <button class="btn btn-secondary">Hablemos</button><button class="btn btn-secondary is-hover">Hablemos</button><button class="btn btn-secondary is-focus">Hablemos</button><button class="btn btn-secondary is-disabled">Hablemos</button>
+      <p class="t-caption">Ghost</p>
+      <button class="btn btn-ghost">Cancelar</button><button class="btn btn-ghost is-hover">Cancelar</button><button class="btn btn-ghost is-focus">Cancelar</button><button class="btn btn-ghost is-disabled">Cancelar</button>
+      <p class="t-caption">Destructivo</p>
+      <button class="btn btn-danger">Eliminar</button><button class="btn btn-danger is-hover">Eliminar</button><button class="btn btn-danger is-focus">Eliminar</button><button class="btn btn-danger is-disabled">Eliminar</button>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Inputs y select</span>
+  <div class="demo-panel">
+    <div class="grid-4">
+      <div class="field">
+        <label class="field-label">Default</label>
+        <input class="input" placeholder="nombre@empresa.com">
+        <p class="field-help">Nunca compartimos tu mail.</p>
+      </div>
+      <div class="field">
+        <label class="field-label">Focus</label>
+        <input class="input is-focus" value="Brana">
+        <p class="field-help">Anillo índigo de 3px.</p>
+      </div>
+      <div class="field">
+        <label class="field-label">Error</label>
+        <input class="input is-error" value="branalabs">
+        <p class="field-error">Ingresá un mail válido.</p>
+      </div>
+      <div class="field">
+        <label class="field-label">Select</label>
+        <div class="select-wrap">
+          <select class="input select"><option>Atalaya</option><option>Próximo vertical</option></select>
+        </div>
+        <p class="field-help">Chevron de 1.75px, como los iconos.</p>
+      </div>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Badges</span>
+  <div class="demo-panel">
+    <div class="row">
+      <span class="badge">Borrador</span>
+      <span class="badge badge-accent">Beta</span>
+      <span class="badge badge-success">Operativo</span>
+      <span class="badge badge-warning">Degradado</span>
+      <span class="badge badge-error">Caído</span>
+      <span class="badge badge-info">Programado</span>
+      <span class="badge" style="background: rgba(61, 184, 151, 0.13); color: #3db897; border-color: transparent;"><span style="display: none;"></span>Atalaya</span>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Barra de navegación</span>
+  <div style="border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;">
+    <div class="navbar">
+      <div class="row" style="gap: 12px;">
+        <span class="stack" style="--s: 22px;"><i></i><i class="a"></i><i></i></span>
+        <span class="wm" style="font-size: 19px;">Brana</span>
+      </div>
+      <div class="navbar-links">
+        <a class="navbar-link is-current" href="#componentes">Productos</a>
+        <a class="navbar-link" href="#componentes">Enfoque</a>
+        <a class="navbar-link" href="#componentes">Nosotros</a>
+        <button class="btn btn-sm">Contacto</button>
+      </div>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Cards</span>
+  <div class="grid-2">
+    <div class="card card-hover">
+      <div class="row" style="gap: 14px; align-items: flex-start;">
+        <div style="width: 48px; height: 48px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <span class="stack" style="--s: 26px;"><i></i><i style="background: #3db897;"></i><i></i></span>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div class="row" style="gap: 10px; justify-content: space-between;">
+            <h4 class="t-h4">Atalaya</h4>
+            <span class="badge badge-success">Operativo</span>
+          </div>
+          <p class="t-small" style="margin-top: 4px;">Gestión para productores asesores de seguros. Cartera, pólizas y cobranzas en un solo lugar.</p>
+          <p class="t-data" style="margin-top: 10px; color: var(--text-3);">branalabs.com/atalaya ↗</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <p class="t-label">Pólizas gestionadas</p>
+      <p class="t-h1" style="margin-top: 10px; font-variant-numeric: tabular-nums;">12.480</p>
+      <p class="t-small" style="margin-top: 6px;"><span style="color: var(--success); font-weight: 600;">+8.2%</span> vs. trimestre anterior</p>
+    </div>
+  </div>
+
+  <span class="t-label sub-label">Light mode</span>
+  <div class="demo-panel" data-theme="light" style="background: var(--bg); border-color: var(--border);">
+    <div class="col" style="gap: var(--s5);">
+      <div class="row">
+        <button class="btn">Ver productos</button>
+        <button class="btn btn-secondary">Hablemos</button>
+        <button class="btn btn-ghost">Cancelar</button>
+        <span class="badge badge-accent">Beta</span>
+        <span class="badge badge-success">Operativo</span>
+        <a class="link" href="#componentes">Link sobre claro</a>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label class="field-label">Email</label>
+          <input class="input" placeholder="nombre@empresa.com">
+        </div>
+        <div class="card" style="padding: var(--s4);">
+          <div class="row" style="gap: 12px;">
+            <span class="stack" style="--s: 22px;"><i style="background: #14161D;"></i><i style="background: #5443C9;"></i><i style="background: #14161D;"></i></span>
+            <p class="t-small" style="color: var(--text);">Las superficies claras usan los mismos tokens con <span class="t-data" style="font-size: 12px;">[data-theme="light"]</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 VOZ ============ -->
+<section id="voz" data-screen-label="08 Tono de voz">
+  <div class="sec-head">
+    <span class="t-label">08</span>
+    <h2 class="t-h2">Tono de voz</h2>
+    <p class="t-body-lg">Brana habla como un equipo de ingeniería que respeta tu tiempo: directo, concreto, técnico sin jerga. Afirmaciones cortas. Números antes que adjetivos.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h4 class="t-h4">Directo</h4>
+      <p class="t-small" style="margin-top: 8px;">Sujeto, verbo, dato. Sin preámbulos ni superlativos. Si una frase funciona sin un adjetivo, va sin el adjetivo.</p>
+    </div>
+    <div class="card">
+      <h4 class="t-h4">Técnico pero accesible</h4>
+      <p class="t-small" style="margin-top: 8px;">Precisión sin gatekeeping: se nombra la tecnología cuando aporta, se explica cuando hace falta, nunca se usa para impresionar.</p>
+    </div>
+    <div class="card">
+      <h4 class="t-h4">Serio, no solemne</h4>
+      <p class="t-small" style="margin-top: 8px;">Sin emojis, sin signos de exclamación, sin "🚀 revolucionando". La confianza se muestra con datos y producto, no con énfasis.</p>
+    </div>
+  </div>
+
+  <table class="voice-table" style="margin-top: var(--s5);">
+    <tbody>
+    <tr>
+      <td class="si"><span class="voice-tag ok">Sí</span>Construimos y operamos software para industrias específicas.</td>
+      <td class="no"><span class="voice-tag bad">No</span>¡Revolucionamos el ecosistema digital con soluciones disruptivas de clase mundial! 🚀</td>
+    </tr>
+    <tr>
+      <td class="si"><span class="voice-tag ok">Sí</span>Atalaya gestiona 12.480 pólizas para PAS en Argentina.</td>
+      <td class="no"><span class="voice-tag bad">No</span>Miles de usuarios confían en nuestra plataforma líder e innovadora.</td>
+    </tr>
+    <tr>
+      <td class="si"><span class="voice-tag ok">Sí</span>Algo falló al importar tu cartera. Reintentá; si persiste, escribinos.</td>
+      <td class="no"><span class="voice-tag bad">No</span>¡Ups! 😅 Parece que tuvimos un problemita inesperado.</td>
+    </tr>
+    <tr>
+      <td class="si"><span class="voice-tag ok">Sí</span>Cada producto tiene identidad propia. Brana es la base común.</td>
+      <td class="no"><span class="voice-tag bad">No</span>Brana es un ecosistema sinérgico de verticales que potencia experiencias end-to-end.</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ 09 IMPLEMENTACIÓN ============ -->
+<section id="implementacion" data-screen-label="09 Implementación">
+  <div class="sec-head">
+    <span class="t-label">09</span>
+    <h2 class="t-h2">Implementación</h2>
+    <p class="t-body-lg">Dos archivos CSS y un link de Google Fonts. Sin frameworks, sin build. Dark por default; <span class="t-data" style="font-size: 14px;">data-theme="light"</span> en cualquier contenedor activa la variante clara.</p>
+  </div>
+
+  <div class="col" style="gap: var(--s4);">
+    <pre class="code"><span class="c">&lt;!-- 1 · Fuentes --&gt;</span>
+&lt;link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"&gt;
+
+<span class="c">&lt;!-- 2 · Sistema --&gt;</span>
+&lt;link rel="stylesheet" href="<span class="k">css/brana-tokens.css</span>"&gt;  <span class="c">variables: color, tipo, espaciado, sombras</span>
+&lt;link rel="stylesheet" href="<span class="k">css/brana-ui.css</span>"&gt;      <span class="c">clases: .t-*, .btn, .input, .badge, .card, .stack</span>
+
+<span class="c">/* 3 · Uso */</span>
+.mi-card &#123;
+  background: <span class="v">var(--surface)</span>;
+  border-radius: <span class="v">var(--r-lg)</span>;
+  box-shadow: <span class="v">var(--e1)</span>;
+  padding: <span class="v">var(--s5)</span>;
+&#125;</pre>
+    <p class="t-small">Ambos archivos viven en este proyecto: <span class="t-data" style="font-size: 13px;">css/brana-tokens.css</span> y <span class="t-data" style="font-size: 13px;">css/brana-ui.css</span> — listos para copiar a branalabs.com. Próximos pasos sobre esta base: kit de redes (LinkedIn, OG, avatares) y las páginas del sitio.</p>
+  </div>
+
+  <div style="margin-top: var(--s8); padding-top: var(--s6); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+    <div class="row" style="gap: 12px;">
+      <span class="stack" style="--s: 20px;"><i></i><i class="a"></i><i></i></span>
+      <span class="t-caption">Brana — Sistema de marca · Estrato v1 · Junio 2026</span>
+    </div>
+    <span class="t-label">branalabs.com</span>
+  </div>
+</section>
+
+</main>
+</body>
+</html>

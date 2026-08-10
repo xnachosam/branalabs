@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brana — Kit de redes · Estrato</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/brana-tokens.css">
+<link rel="stylesheet" href="css/brana-ui.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); }
+  body { font-family: var(--font-body); color: var(--text); -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--accent-soft); }
+
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 48px 160px; }
+
+  /* ---------- header ---------- */
+  header.top {
+    padding: 80px 0 48px; border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
+  }
+  header.top .lede { max-width: 640px; }
+  header.top .kicker { color: var(--accent-hover); margin: 0 0 18px; }
+  header.top h1 { font-family: var(--font-display); font-weight: 700; font-size: 52px; line-height: 1.04; letter-spacing: -0.03em; margin: 0; }
+  header.top p { margin: 18px 0 0; }
+  header.top .badge { margin-top: 22px; }
+  .head-mark { display: flex; align-items: center; gap: 20px; }
+  .head-mark .wm { font-size: 40px; }
+
+  /* ---------- sections ---------- */
+  section { padding-top: 96px; }
+  .sec-head { max-width: 720px; margin-bottom: 38px; }
+  .kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500; margin: 0; }
+  .sec-head .kicker { color: var(--accent-hover); margin-bottom: 14px; }
+  .sec-head h2 { font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.12; letter-spacing: -0.02em; margin: 0; }
+  .sec-head p { font-family: var(--font-body); font-size: 18px; line-height: 1.6; color: var(--text-2); margin: 16px 0 0; }
+  .sec-head code { font-family: var(--font-mono); font-size: 0.85em; color: var(--accent-hover); background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; }
+
+  /* ---------- specimen scaffolding ---------- */
+  .cap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 0 0 11px; }
+  .cap .name { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); }
+  .cap .dim { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; color: var(--text-3); }
+  .frame { position: relative; width: 100%; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--e1); }
+  .art { position: absolute; top: 0; left: 0; transform-origin: top left; overflow: hidden; }
+  .stack-row { margin-bottom: 40px; }
+  .grid { display: grid; gap: 28px; }
+  .g2 { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .g3 { grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,1fr); }
+
+  /* ---------- isotipo helpers ---------- */
+  /* product templates: middle layer = product color */
+  .stack i.a { background: var(--layer, var(--accent)); }
+  .iso-c { display: flex; align-items: center; justify-content: center; }
+  .iso-c .stack { transform: translateY(calc(var(--s) * 0.085)); }
+
+  /* faint background motif */
+  .motif { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .motif .stack i { background: transparent; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.06); }
+
+  /* ===== AVATAR ===== */
+  .av { display: flex; align-items: center; justify-content: center; }
+  .av-dark { background: #0B0C10; }
+  .av-light { background: #F7F8FB; }
+  .crop-row { display: flex; align-items: center; gap: 22px; margin-top: 16px; }
+  .crop { border-radius: 50%; overflow: hidden; position: relative; box-shadow: var(--e1); flex-shrink: 0; }
+  .crop > div { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .crop-cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--text-3); }
+
+  /* ===== BANNER ===== */
+  .banner { background: #0B0C10; position: relative;
+    background-image: radial-gradient(140% 120% at 90% 10%, rgba(106,91,234,0.16), transparent 55%); }
+  .banner-inner { position: absolute; left: 56px; top: 50%; transform: translateY(-50%); }
+  .lockup { display: flex; align-items: center; gap: 16px; }
+  .lockup .wm { line-height: 1; }
+  .banner-tag { font-family: var(--font-body); font-size: 17px; font-weight: 500; color: var(--text-2); margin: 16px 0 0; max-width: 540px; }
+  .banner-meta { position: absolute; right: 44px; bottom: 26px; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--text-3); }
+
+  /* ===== OG ===== */
+  .og { position: relative; background: #0B0C10; display: grid; grid-template-columns: 1.25fr 0.75fr; align-items: center; padding: 0 84px; gap: 40px;
+    background-image: radial-gradient(120% 130% at 100% 50%, rgba(106,91,234,0.14), transparent 60%); }
+  .og.og-prod { background-image: radial-gradient(120% 130% at 100% 50%, rgba(61,184,151,0.14), transparent 60%); }
+  .og-text .kicker { color: var(--accent-hover); margin: 0 0 22px; }
+  .og.og-prod .og-text .kicker { color: #54c9a6; }
+  .og-text h2 { font-family: var(--font-display); font-weight: 700; font-size: 96px; line-height: 0.98; letter-spacing: -0.035em; margin: 0; color: var(--text); }
+  .og-text .tag { font-family: var(--font-body); font-size: 30px; line-height: 1.32; font-weight: 500; color: var(--text-2); margin: 28px 0 0; max-width: 560px; }
+  .og-url { position: absolute; left: 84px; bottom: 56px; font-family: var(--font-mono); font-size: 17px; letter-spacing: 0.04em; color: var(--text-3); }
+  .og-endorse { position: absolute; left: 84px; bottom: 52px; display: flex; align-items: center; gap: 12px; }
+  .og-endorse .wm { font-size: 22px; }
+  .og-endorse .by { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.05em; color: var(--text-3); }
+
+  /* ===== POST 1080 ===== */
+  .post { position: relative; background: #0B0C10; padding: 104px; display: flex; flex-direction: column; }
+  .post-top { display: flex; align-items: center; justify-content: space-between; }
+  .post .wm { line-height: 1; }
+  .post-statement { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; line-height: 1.04; color: var(--text); margin: 0; }
+  .post-foot { font-family: var(--font-mono); font-size: 22px; letter-spacing: 0.04em; color: var(--text-3); }
+  .post-quote-mark { font-family: var(--font-display); font-weight: 700; color: var(--accent); font-size: 200px; line-height: 0.7; height: 120px; }
+  .pill { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 19px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    padding: 10px 18px; border-radius: var(--r-full); }
+  .pill-prod { background: rgba(61,184,151,0.13); color: #54c9a6; border: 1px solid rgba(61,184,151,0.4); }
+  .pill-prod::before { content:''; width: 11px; height: 11px; border-radius: 50%; background: #3db897; }
+
+  /* ===== FAVICON ===== */
+  .ico-set { display: flex; align-items: flex-end; gap: 26px; flex-wrap: wrap; }
+  .ico { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .ico .tile { display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 0 1px var(--border); }
+  .ico .tile.dk { background: #0B0C10; }
+  .ico .tile.lt { background: #F7F8FB; }
+  .ico .lab { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.05em; color: var(--text-3); }
+  .ico-block { margin-bottom: 8px; }
+  .ico-block .kicker { color: var(--text-3); margin: 0 0 18px; }
+
+  /* ---------- usage notes ---------- */
+  .notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+  .note { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; }
+  .note h4 { font-family: var(--font-display); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; margin: 0 0 8px; color: var(--text); }
+  .note p { font-family: var(--font-body); font-size: 14px; line-height: 1.55; color: var(--text-2); margin: 0; }
+  .note code { font-family: var(--font-mono); font-size: 12px; color: var(--accent-hover); }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px 100px; }
+    .g2 { grid-template-columns: 1fr; }
+    .notes { grid-template-columns: 1fr; }
+    header.top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= HEADER ================= -->
+  <header class="top">
+    <div class="lede">
+      <p class="kicker t-label">Sistema Estrato · Kit de redes</p>
+      <h1>Brana en redes sociales</h1>
+      <p class="t-body-lg">Avatares, banner, imágenes para compartir, plantillas de post y favicons — todo derivado del isotipo (pila de tres capas, capa media índigo) y de los tokens del sistema. Cada pieza está construida en HTML+CSS a tamaño real, lista para exportar como SVG/PNG.</p>
+      <span class="badge badge-accent">Dark-first · #0B0C10</span>
+    </div>
+    <div class="head-mark">
+      <span class="stack" style="--s:72px"><i></i><i class="a"></i><i></i></span>
+      <span class="wm">Brana</span>
+    </div>
+  </header>
+
+  <!-- ================= 1 · AVATARES ================= -->
+  <section id="avatares">
+    <div class="sec-head">
+      <p class="kicker">01 — Foto de perfil</p>
+      <h2>Avatares</h2>
+      <p>El isotipo aislado, centrado en un cuadrado. Una versión sobre fondo oscuro <code>#0B0C10</code> y otra sobre claro <code>#F7F8FB</code>. La pila se lee con claridad incluso en el recorte circular de LinkedIn e Instagram.</p>
+    </div>
+    <div class="grid g2">
+      <div>
+        <div class="cap"><span class="name">Avatar · oscuro</span><span class="dim">512 × 512</span></div>
+        <div class="frame"><div class="art av av-dark iso-c" data-art data-w="512" data-h="512">
+          <span class="stack" style="--s:300px"><i></i><i class="a"></i><i></i></span>
+        </div></div>
+        <div class="crop-row">
+          <div class="crop" style="width:96px;height:96px"><div class="av-dark iso-c"><span class="stack" style="--s:58px"><i></i><i class="a"></i><i></i></span></div></div>
+          <div class="crop" style="width:56px;height:56px"><div class="av-dark iso-c"><span class="stack" style="--s:34px"><i></i><i class="a"></i><i></i></span></div></div>
+          <span class="crop-cap">recorte circular · 96 / 56 px</span>
+        </div>
+      </div>
+      <div>
+        <div class="cap"><span class="name">Avatar · claro</span><span class="dim">512 × 512</span></div>
+        <div class="frame"><div class="art av av-light iso-c" data-art data-w="512" data-h="512" data-theme="light">
+          <span class="stack stack-light" style="--s:300px"><i></i><i class="a"></i><i></i></span>
+        </div></div>
+        <div class="crop-row">
+          <div class="crop" style="width:96px;height:96px"><div class="av-light iso-c" data-theme="light"><span class="stack stack-light" style="--s:58px"><i></i><i class="a"></i><i></i></span></div></div>
+          <div class="crop" style="width:56px;height:56px"><div class="av-light iso-c" data-theme="light"><span class="stack stack-light" style="--s:34px"><i></i><i class="a"></i><i></i></span></div></div>
+          <span class="crop-cap">recorte circular · 96 / 56 px</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2 · BANNER LINKEDIN ================= -->
+  <section id="banner">
+    <div class="sec-head">
+      <p class="kicker">02 — LinkedIn</p>
+      <h2>Banner de empresa</h2>
+      <p>Wordmark, isotipo y tagline sobre fondo oscuro, con el motivo Estrato (planos isométricos en contorno) bajando desde la esquina. Contenido alineado a la izquierda y centrado en vertical para sobrevivir al recorte y al logo superpuesto de LinkedIn.</p>
+    </div>
+    <div class="cap"><span class="name">Banner · LinkedIn empresa</span><span class="dim">1128 × 191</span></div>
+    <div class="frame"><div class="art banner" data-art data-w="1128" data-h="191">
+      <div class="motif">
+        <span class="stack" style="--s:230px;position:absolute;right:120px;top:-46px;opacity:.9"><i></i><i></i><i></i></span>
+        <span class="stack" style="--s:150px;position:absolute;right:30px;top:54px;opacity:.7"><i></i><i></i><i></i></span>
+      </div>
+      <div class="banner-inner">
+        <div class="lockup">
+          <span class="stack" style="--s:56px"><i></i><i class="a"></i><i></i></span>
+          <span class="wm" style="font-size:42px">Brana</span>
+        </div>
+        <p class="banner-tag">Infraestructura por capas para equipos de producto.</p>
+      </div>
+      <div class="banner-meta">branalabs.com · hola@branalabs.com</div>
+    </div></div>
+  </section>
+
+  <!-- ================= 3 · OG / SOCIAL SHARE ================= -->
+  <section id="og">
+    <div class="sec-head">
+      <p class="kicker">03 — Open Graph</p>
+      <h2>Imagen para compartir</h2>
+      <p>La pieza genérica (casa matriz, índigo) y una plantilla reusable para anuncios de producto. En la plantilla, la capa media del isotipo toma el color del producto — aquí <code>Atalaya</code> en verde <code>#3db897</code> — siguiendo la regla del sistema. El mismo layout escala a cualquier vertical futuro: solo cambia nombre, descripción y color de capa.</p>
+    </div>
+
+    <div class="stack-row">
+      <div class="cap"><span class="name">OG genérica · Brana</span><span class="dim">1200 × 630</span></div>
+      <div class="frame"><div class="art og" data-art data-w="1200" data-h="630">
+        <div class="og-text">
+          <p class="kicker">Sistema Estrato</p>
+          <h2>Brana</h2>
+          <p class="tag">Infraestructura por capas para equipos de producto.</p>
+        </div>
+        <div class="iso-c"><span class="stack" style="--s:300px"><i></i><i class="a"></i><i></i></span></div>
+        <p class="og-url">branalabs.com</p>
+      </div></div>
+    </div>
+
+    <div class="stack-row">
+      <div class="cap"><span class="name">OG plantilla de producto · Atalaya</span><span class="dim">1200 × 630 · capa media = color de producto</span></div>
+      <div class="frame"><div class="art og og-prod" data-art data-w="1200" data-h="630">
+        <div class="og-text">
+          <p class="kicker">Lanzamiento</p>
+          <h2>Atalaya</h2>
+          <p class="tag">Observabilidad por capas para tu stack.</p>
+        </div>
+        <div class="iso-c"><span class="stack" style="--s:300px;--layer:#3db897"><i></i><i class="a"></i><i></i></span></div>
+        <div class="og-endorse">
+          <span class="stack" style="--s:26px"><i></i><i class="a"></i><i></i></span>
+          <span class="by">una empresa</span><span class="wm" style="font-size:22px">Brana</span>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ================= 4 · POST CUADRADO ================= -->
+  <section id="post">
+    <div class="sec-head">
+      <p class="kicker">04 — Feed</p>
+      <h2>Post cuadrado</h2>
+      <p>Tres plantillas para Instagram y LinkedIn: anuncio genérico, anuncio de producto (capa media en el color del producto) y cita. Misma rejilla, mismos márgenes — cambia el contenido, no la estructura.</p>
+    </div>
+    <div class="grid g3">
+      <!-- genérico -->
+      <div>
+        <div class="cap"><span class="name">Genérico</span><span class="dim">1080²</span></div>
+        <div class="frame"><div class="art post" data-art data-w="1080" data-h="1080">
+          <div class="post-top">
+            <div class="lockup"><span class="stack" style="--s:64px"><i></i><i class="a"></i><i></i></span><span class="wm" style="font-size:46px">Brana</span></div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center">
+            <p class="post-statement" style="font-size:88px">Una base.<br>Cada producto,<br>una capa.</p>
+          </div>
+          <p class="post-foot">instagram.com/branalabs</p>
+        </div></div>
+      </div>
+      <!-- producto -->
+      <div>
+        <div class="cap"><span class="name">Producto</span><span class="dim">1080²</span></div>
+        <div class="frame"><div class="art post" data-art data-w="1080" data-h="1080">
+          <div class="post-top">
+            <span class="pill pill-prod">Nuevo</span>
+            <span class="iso-c"><span class="stack" style="--s:96px;--layer:#3db897"><i></i><i class="a"></i><i></i></span></span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px">
+            <p class="post-statement" style="font-size:104px;color:var(--text)">Atalaya</p>
+            <p style="font-family:var(--font-body);font-size:34px;line-height:1.35;font-weight:500;color:var(--text-2);margin:0;max-width:760px">Observabilidad por capas para tu stack.</p>
+          </div>
+          <div class="lockup"><span class="stack" style="--s:34px"><i></i><i class="a"></i><i></i></span><span class="post-foot" style="color:var(--text-3)">una empresa</span><span class="wm" style="font-size:30px">Brana</span></div>
+        </div></div>
+      </div>
+      <!-- cita -->
+      <div>
+        <div class="cap"><span class="name">Cita</span><span class="dim">1080²</span></div>
+        <div class="frame"><div class="art post" data-art data-w="1080" data-h="1080">
+          <div class="post-quote-mark">&ldquo;</div>
+          <div style="flex:1;display:flex;align-items:center">
+            <p class="post-statement" style="font-size:62px;font-weight:600">Dejamos de parchar. Ahora cada equipo construye sobre la misma base.</p>
+          </div>
+          <div class="lockup" style="justify-content:space-between">
+            <span class="post-foot" style="color:var(--text-2);font-size:22px">Equipo de plataforma</span>
+            <span class="stack" style="--s:48px"><i></i><i class="a"></i><i></i></span>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5 · FAVICON / APP ICONS ================= -->
+  <section id="favicon">
+    <div class="sec-head">
+      <p class="kicker">05 — Favicon / app icons</p>
+      <h2>Set de iconos</h2>
+      <p>El isotipo renderizado a tamaño real en cada tamaño objetivo. Los <code>16</code> y <code>32</code> px son favicons; <code>180</code> (apple-touch, esquinas redondeadas), <code>192</code> y <code>512</code> (Android / maskable). La capa media índigo mantiene la lectura aún a 16 px.</p>
+    </div>
+
+    <div class="ico-block">
+      <p class="kicker">Oscuro · #0B0C10</p>
+      <div class="ico-set" id="ico-dark"></div>
+    </div>
+    <div class="ico-block">
+      <p class="kicker">Claro · #F7F8FB</p>
+      <div class="ico-set" id="ico-light"></div>
+    </div>
+  </section>
+
+  <!-- ================= NOTAS DE USO ================= -->
+  <section id="notas">
+    <div class="sec-head">
+      <p class="kicker">06 — Producción</p>
+      <h2>Notas de exportación</h2>
+    </div>
+    <div class="notes">
+      <div class="note">
+        <h4>Sin elementos nuevos</h4>
+        <p>Todo deriva del isotipo y de <code>brana-tokens.css</code>. No se introdujeron tonos de índigo ni tipografías adicionales.</p>
+      </div>
+      <div class="note">
+        <h4>Regla de capa de producto</h4>
+        <p>En plantillas de producto, la capa media toma el color del producto vía <code>--layer</code>. Atalaya: <code>#3db897</code>. Cualquier vertical futuro reusa el layout cambiando ese valor.</p>
+      </div>
+      <div class="note">
+        <h4>Export</h4>
+        <p>Cada pieza está a tamaño real en HTML+CSS. Claude Code puede capturar a PNG o reescribir como SVG estático con las mismas coordenadas.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // ---- build favicon / app-icon sets ----
+  const sizes = [
+    { px: 16,  r: 0,  lab: 'favicon · 16' },
+    { px: 32,  r: 0,  lab: 'favicon · 32' },
+    { px: 180, r: 40, lab: 'apple-touch · 180' },
+    { px: 192, r: 0,  lab: 'android · 192' },
+    { px: 512, r: 0,  lab: 'maskable · 512' },
+  ];
+  function buildIcons(host, theme) {
+    sizes.forEach(s => {
+      const ico = document.createElement('div');
+      ico.className = 'ico';
+      const tile = document.createElement('div');
+      tile.className = 'tile iso-c ' + (theme === 'light' ? 'lt' : 'dk');
+      tile.style.width = s.px + 'px';
+      tile.style.height = s.px + 'px';
+      tile.style.borderRadius = s.r ? (s.r/180*s.px) + 'px' : (s.px <= 32 ? '2px' : '0');
+      if (theme === 'light') tile.setAttribute('data-theme', 'light');
+      const stk = document.createElement('span');
+      stk.className = 'stack' + (theme === 'light' ? ' stack-light' : '');
+      stk.style.setProperty('--s', Math.round(s.px * 0.66) + 'px');
+      stk.innerHTML = '<i></i><i class="a"></i><i></i>';
+      tile.appendChild(stk);
+      const lab = document.createElement('div');
+      lab.className = 'lab';
+      lab.textContent = s.lab;
+      ico.appendChild(tile);
+      ico.appendChild(lab);
+      host.appendChild(ico);
+    });
+  }
+  buildIcons(document.getElementById('ico-dark'), 'dark');
+  buildIcons(document.getElementById('ico-light'), 'light');
+
+  // ---- scale real-size artboards to fit their column ----
+  function fitArt() {
+    document.querySelectorAll('[data-art]').forEach(art => {
+      const w = +art.dataset.w, h = +art.dataset.h;
+      const wrap = art.parentElement;
+      const avail = wrap.clientWidth;
+      const scale = avail / w;
+      art.style.width = w + 'px';
+      art.style.height = h + 'px';
+      art.style.transform = 'scale(' + scale + ')';
+      wrap.style.height = (h * scale) + 'px';
+    });
+  }
+  fitArt();
+  window.addEventListener('resize', fitArt);
+  window.addEventListener('load', fitArt);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitArt);
+</script>
+</body>
+</html>

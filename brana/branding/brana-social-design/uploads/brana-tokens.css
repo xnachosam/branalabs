@@ -1,0 +1,121 @@
+/* ============================================================
+   Brana — Design tokens · v1 "Estrato"
+   Dark-first. Cargar fuentes vía <link> de Google Fonts:
+   Space Grotesk 500/600/700 · Hanken Grotesk 400–800 · IBM Plex Mono 400/500
+   Uso: <html> (dark default) · <html data-theme="light"> o cualquier
+   contenedor con [data-theme="light"] para la variante clara.
+   ============================================================ */
+
+:root {
+  /* ---- Color · base dark (default) ---- */
+  --bg: #0B0C10;
+  --surface: #14161D;
+  --surface-2: #1B1E28;
+  --border: #242836;
+  --border-strong: #343A4C;
+
+  --text: #F2F3F8;
+  --text-2: #9BA0AE;
+  --text-3: #5C616F;
+
+  /* ---- Acento · Índigo Brana ---- */
+  --accent: #6A5BEA;
+  --accent-hover: #8B7FEF;
+  --accent-active: #5645D0;
+  --accent-ink: #FFFFFF;
+  --accent-soft: rgba(106, 91, 234, 0.14);
+  --accent-border: rgba(106, 91, 234, 0.40);
+
+  /* ---- Estados (familia del índigo: misma saturación contenida) ---- */
+  --success: #4CB782;
+  --success-soft: rgba(76, 183, 130, 0.13);
+  --error: #E25D6E;
+  --error-soft: rgba(226, 93, 110, 0.13);
+  --warning: #D9963C;
+  --warning-soft: rgba(217, 150, 60, 0.13);
+  --info: #4D9FDB;
+  --info-soft: rgba(77, 159, 219, 0.13);
+
+  --link: #8B7FEF;
+  --link-hover: #A99FF3;
+
+  --focus-ring: 0 0 0 3px rgba(139, 127, 239, 0.35);
+  --disabled-fg: #5C616F;
+  --disabled-bg: #171922;
+  --overlay: rgba(4, 5, 9, 0.65);
+
+  /* ---- Tipografía ---- */
+  --font-display: 'Space Grotesk', sans-serif;   /* wordmark + headings */
+  --font-body: 'Hanken Grotesk', sans-serif;     /* body + UI */
+  --font-mono: 'IBM Plex Mono', monospace;       /* etiquetas + datos */
+
+  --display-size: 64px; --display-lh: 1.05; --display-ls: -0.03em; --display-w: 700;
+  --h1-size: 48px;      --h1-lh: 1.08;      --h1-ls: -0.025em;     --h1-w: 700;
+  --h2-size: 32px;      --h2-lh: 1.15;      --h2-ls: -0.02em;      --h2-w: 700;
+  --h3-size: 24px;      --h3-lh: 1.25;      --h3-ls: -0.015em;     --h3-w: 600;
+  --h4-size: 18px;      --h4-lh: 1.35;      --h4-ls: -0.01em;      --h4-w: 600;
+  --body-lg-size: 18px; --body-lg-lh: 1.6;
+  --body-size: 16px;    --body-lh: 1.6;
+  --small-size: 14px;   --small-lh: 1.5;
+  --caption-size: 12.5px; --caption-lh: 1.4;
+  --btn-size: 15px;     --btn-sm-size: 13.5px;
+  --label-size: 12px;   --label-ls: 0.08em;   /* mono uppercase */
+  --data-size: 13px;
+
+  /* ---- Espaciado (base 4px) ---- */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+
+  /* ---- Radios ---- */
+  --r-sm: 4px;    /* badges, chips */
+  --r-md: 6px;    /* botones, inputs */
+  --r-lg: 10px;   /* cards, modales */
+  --r-full: 999px;/* pills, avatares */
+
+  /* ---- Elevación (afinada para fondo oscuro: sombra + borde) ---- */
+  --e1: 0 1px 2px rgba(0, 0, 0, 0.50), 0 0 0 1px var(--border);
+  --e2: 0 4px 14px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--border);
+  --e3: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--border-strong);
+  --e-accent: 0 0 0 1px var(--accent-border), 0 8px 24px rgba(106, 91, 234, 0.18);
+}
+
+[data-theme="light"] {
+  --bg: #F7F8FB;
+  --surface: #FFFFFF;
+  --surface-2: #EEF0F6;
+  --border: #E3E6EE;
+  --border-strong: #C9CEDC;
+
+  --text: #14161D;
+  --text-2: #686E7E;
+  --text-3: #9BA0AE;
+
+  --accent: #5443C9;
+  --accent-hover: #6A5BEA;
+  --accent-active: #46389F;
+  --accent-ink: #FFFFFF;
+  --accent-soft: rgba(84, 67, 201, 0.10);
+  --accent-border: rgba(84, 67, 201, 0.35);
+
+  --success: #208A5E;
+  --success-soft: rgba(32, 138, 94, 0.10);
+  --error: #C8404F;
+  --error-soft: rgba(200, 64, 79, 0.10);
+  --warning: #A8701D;
+  --warning-soft: rgba(168, 112, 29, 0.10);
+  --info: #2F7BB5;
+  --info-soft: rgba(47, 123, 181, 0.10);
+
+  --link: #5443C9;
+  --link-hover: #46389F;
+
+  --focus-ring: 0 0 0 3px rgba(84, 67, 201, 0.25);
+  --disabled-fg: #9BA0AE;
+  --disabled-bg: #EEF0F6;
+  --overlay: rgba(20, 22, 29, 0.45);
+
+  --e1: 0 1px 2px rgba(20, 22, 29, 0.08), 0 0 0 1px var(--border);
+  --e2: 0 4px 14px rgba(20, 22, 29, 0.10), 0 0 0 1px var(--border);
+  --e3: 0 16px 40px rgba(20, 22, 29, 0.14), 0 0 0 1px var(--border-strong);
+  --e-accent: 0 0 0 1px var(--accent-border), 0 8px 24px rgba(84, 67, 201, 0.14);
+}

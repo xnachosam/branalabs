@@ -1,0 +1,150 @@
+/* ============================================================
+   Brana — UI base · v1 "Estrato"
+   Clases tipográficas y componentes. Requiere brana-tokens.css.
+   Los modificadores .is-hover / .is-active / .is-focus / .is-disabled
+   existen solo para documentar estados en specimens estáticos.
+   ============================================================ */
+
+/* ---------- Tipografía ---------- */
+.t-display { font-family: var(--font-display); font-size: var(--display-size); line-height: var(--display-lh); letter-spacing: var(--display-ls); font-weight: var(--display-w); color: var(--text); margin: 0; text-wrap: pretty; }
+.t-h1 { font-family: var(--font-display); font-size: var(--h1-size); line-height: var(--h1-lh); letter-spacing: var(--h1-ls); font-weight: var(--h1-w); color: var(--text); margin: 0; text-wrap: pretty; }
+.t-h2 { font-family: var(--font-display); font-size: var(--h2-size); line-height: var(--h2-lh); letter-spacing: var(--h2-ls); font-weight: var(--h2-w); color: var(--text); margin: 0; text-wrap: pretty; }
+.t-h3 { font-family: var(--font-display); font-size: var(--h3-size); line-height: var(--h3-lh); letter-spacing: var(--h3-ls); font-weight: var(--h3-w); color: var(--text); margin: 0; }
+.t-h4 { font-family: var(--font-display); font-size: var(--h4-size); line-height: var(--h4-lh); letter-spacing: var(--h4-ls); font-weight: var(--h4-w); color: var(--text); margin: 0; }
+.t-body-lg { font-family: var(--font-body); font-size: var(--body-lg-size); line-height: var(--body-lg-lh); font-weight: 400; color: var(--text-2); margin: 0; }
+.t-body { font-family: var(--font-body); font-size: var(--body-size); line-height: var(--body-lh); font-weight: 400; color: var(--text-2); margin: 0; }
+.t-small { font-family: var(--font-body); font-size: var(--small-size); line-height: var(--small-lh); font-weight: 400; color: var(--text-2); margin: 0; }
+.t-caption { font-family: var(--font-body); font-size: var(--caption-size); line-height: var(--caption-lh); font-weight: 500; color: var(--text-3); margin: 0; }
+.t-label { font-family: var(--font-mono); font-size: var(--label-size); letter-spacing: var(--label-ls); text-transform: uppercase; font-weight: 500; color: var(--text-3); margin: 0; }
+.t-data { font-family: var(--font-mono); font-size: var(--data-size); font-weight: 400; color: var(--text-2); margin: 0; }
+
+/* ---------- Links ---------- */
+.link { color: var(--link); text-decoration: none; border-bottom: 1px solid transparent; transition: color 120ms, border-color 120ms; cursor: pointer; }
+.link:hover, .link.is-hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+.link:focus-visible, .link.is-focus { outline: none; box-shadow: var(--focus-ring); border-radius: 2px; }
+
+/* ---------- Wordmark ---------- */
+.wm { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--text); }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s2);
+  font-family: var(--font-body); font-size: var(--btn-size); font-weight: 600; line-height: 1;
+  padding: 12px 22px; border-radius: var(--r-md); border: 1px solid transparent;
+  background: var(--accent); color: var(--accent-ink);
+  cursor: pointer; transition: background 120ms, border-color 120ms, color 120ms, box-shadow 120ms;
+  -webkit-user-select: none; user-select: none; white-space: nowrap;
+}
+.btn:hover, .btn.is-hover { background: var(--accent-hover); }
+.btn:active, .btn.is-active { background: var(--accent-active); }
+.btn:focus-visible, .btn.is-focus { outline: none; box-shadow: var(--focus-ring); }
+.btn:disabled, .btn.is-disabled { background: var(--disabled-bg); color: var(--disabled-fg); cursor: not-allowed; border-color: var(--border); }
+
+.btn-secondary { background: var(--surface); color: var(--text); border-color: var(--border-strong); }
+.btn-secondary:hover, .btn-secondary.is-hover { background: var(--surface-2); border-color: var(--border-strong); }
+.btn-secondary:active, .btn-secondary.is-active { background: var(--border); }
+.btn-secondary:disabled, .btn-secondary.is-disabled { background: var(--disabled-bg); color: var(--disabled-fg); border-color: var(--border); }
+
+.btn-ghost { background: transparent; color: var(--text-2); }
+.btn-ghost:hover, .btn-ghost.is-hover { background: var(--surface-2); color: var(--text); }
+.btn-ghost:active, .btn-ghost.is-active { background: var(--border); color: var(--text); }
+.btn-ghost:disabled, .btn-ghost.is-disabled { background: transparent; color: var(--disabled-fg); }
+
+.btn-danger { background: transparent; color: var(--error); border-color: var(--error); }
+.btn-danger:hover, .btn-danger.is-hover { background: var(--error); color: #FFFFFF; }
+.btn-danger:active, .btn-danger.is-active { background: var(--error); color: #FFFFFF; filter: brightness(0.85); }
+.btn-danger:disabled, .btn-danger.is-disabled { background: transparent; color: var(--disabled-fg); border-color: var(--border); }
+
+.btn-sm { font-size: var(--btn-sm-size); padding: 8px 14px; }
+
+/* ---------- Inputs ---------- */
+.field { display: flex; flex-direction: column; gap: var(--s2); }
+.field-label { font-family: var(--font-body); font-size: var(--small-size); font-weight: 600; color: var(--text); }
+.input {
+  font-family: var(--font-body); font-size: var(--body-size); color: var(--text);
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  padding: 11px 14px; width: 100%; box-sizing: border-box; transition: border-color 120ms, box-shadow 120ms;
+}
+.input::placeholder { color: var(--text-3); }
+.input:hover { border-color: var(--text-3); }
+.input:focus, .input.is-focus { outline: none; border-color: var(--accent); box-shadow: var(--focus-ring); }
+.input.is-error { border-color: var(--error); }
+.input.is-error:focus { box-shadow: 0 0 0 3px var(--error-soft); }
+.input:disabled, .input.is-disabled { background: var(--disabled-bg); color: var(--disabled-fg); border-color: var(--border); cursor: not-allowed; }
+.field-help { font-family: var(--font-body); font-size: var(--caption-size); color: var(--text-3); }
+.field-error { font-family: var(--font-body); font-size: var(--caption-size); color: var(--error); }
+
+.select-wrap { position: relative; }
+.select-wrap::after {
+  content: ''; position: absolute; right: 14px; top: 50%; width: 7px; height: 7px;
+  border-right: 1.75px solid var(--text-2); border-bottom: 1.75px solid var(--text-2);
+  transform: translateY(-70%) rotate(45deg); pointer-events: none;
+}
+.select { appearance: none; -webkit-appearance: none; padding-right: 36px; cursor: pointer; }
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;
+  padding: 4px 9px; border-radius: var(--r-sm);
+  background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border);
+}
+.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); flex-shrink: 0; }
+.badge-accent { background: var(--accent-soft); color: var(--accent-hover); border-color: var(--accent-border); }
+.badge-accent::before { background: var(--accent); }
+.badge-success { background: var(--success-soft); color: var(--success); border-color: transparent; }
+.badge-success::before { background: var(--success); }
+.badge-error { background: var(--error-soft); color: var(--error); border-color: transparent; }
+.badge-error::before { background: var(--error); }
+.badge-warning { background: var(--warning-soft); color: var(--warning); border-color: transparent; }
+.badge-warning::before { background: var(--warning); }
+.badge-info { background: var(--info-soft); color: var(--info); border-color: transparent; }
+.badge-info::before { background: var(--info); }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  padding: 0 var(--s5); height: 64px; box-sizing: border-box;
+}
+.navbar-links { display: flex; align-items: center; gap: var(--s5); }
+.navbar-link { font-family: var(--font-body); font-size: var(--small-size); font-weight: 500; color: var(--text-2); text-decoration: none; transition: color 120ms; }
+.navbar-link:hover { color: var(--text); }
+.navbar-link.is-current { color: var(--text); }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--e1);
+  padding: var(--s5); box-sizing: border-box;
+}
+.card-hover { transition: box-shadow 150ms, transform 150ms; }
+.card-hover:hover { box-shadow: var(--e2); transform: translateY(-2px); }
+
+/* ---------- Motivo "pila isométrica" ---------- */
+/* <span class="stack" style="--s:64px"><i></i><i class="a"></i><i></i></span> */
+.stack { position: relative; display: block; width: var(--s, 64px); height: var(--s, 64px); flex-shrink: 0; }
+.stack i {
+  position: absolute; left: 50%; display: block;
+  width: calc(var(--s, 64px) * 0.58); height: calc(var(--s, 64px) * 0.58);
+  transform: translateX(-50%) scaleY(0.5) rotate(45deg);
+  background: var(--text);
+}
+.stack i:nth-child(1) { top: 0; z-index: 4; }
+.stack i:nth-child(2) { top: calc(var(--s, 64px) * 0.17); z-index: 3; }
+.stack i:nth-child(3) { top: calc(var(--s, 64px) * 0.34); z-index: 2; }
+.stack i:nth-child(4) { top: calc(var(--s, 64px) * 0.51); z-index: 1; }
+.stack i.a { background: var(--accent); }
+.stack i.ghost { background: transparent; box-shadow: inset 0 0 0 2.5px var(--border-strong); }
+.stack-light i { background: #14161D; }
+
+/* Loader: la pila respira de arriba hacia abajo */
+.stack-loader i { animation: stack-pulse 1.3s ease-in-out infinite; }
+.stack-loader i:nth-child(2) { animation-delay: 0.18s; }
+.stack-loader i:nth-child(3) { animation-delay: 0.36s; }
+@keyframes stack-pulse { 0%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .stack-loader i { animation: none; opacity: 0.8; } }
+
+/* Separador de sección: línea + tres planos */
+.sep { display: flex; align-items: center; gap: var(--s4); }
+.sep::before, .sep::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.sep .stack { --s: 18px; }
