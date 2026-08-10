@@ -1,0 +1,80 @@
+/* ============================================================
+   Atalaya — Design tokens · v1
+   Sistema "Estrato" (estructura espejo de Brana, valores Atalaya).
+   Dark-only. Cargar fuentes vía <link> de Google Fonts:
+   Syne 700/800 · Inter 400/500/600
+   ============================================================ */
+
+:root {
+  /* ---- Color · base dark ---- */
+  --bg: #080E1C;            /* fondo principal (de vigente-v4) */
+  --surface: #0E1626;       /* un paso más claro que --bg (cards, paneles) */
+  --surface-2: #161F35;     /* superficie elevada / hover */
+  --border: #1B2236;        /* borde sutil (~white .06 sobre --bg) */
+  --border-strong: #2A3350; /* borde visible (~white .14 sobre --bg) */
+
+  --text: #F2F3F8;          /* heredado de Brana — blanco es universal */
+  --text-2: #9BA0AE;
+  --text-3: #5C616F;
+
+  /* ---- Acento · Verde Atalaya ---- */
+  --accent: #1A7A5E;        /* verde primario */
+  --accent-hover: #3db897;  /* verde claro / acento secundario / texto */
+  --accent-active: #145F49; /* verde profundo (de los gradientes de vigente) */
+  --accent-ink: #FFFFFF;
+  --accent-soft: rgba(26, 122, 94, 0.14);
+  --accent-border: rgba(26, 122, 94, 0.40);
+
+  /* ---- Estados (semánticos universales — valores de Brana) ---- */
+  --success: #4CB782;
+  --success-soft: rgba(76, 183, 130, 0.13);
+  --error: #E25D6E;
+  --error-soft: rgba(226, 93, 110, 0.13);
+  --warning: #D9963C;
+  --warning-soft: rgba(217, 150, 60, 0.13);
+  --info: #4D9FDB;
+  --info-soft: rgba(77, 159, 219, 0.13);
+
+  --link: #3db897;
+  --link-hover: #5FC9AB;    /* derivado: un paso más claro que --link */
+
+  --focus-ring: 0 0 0 3px rgba(61, 184, 151, 0.35);
+  --disabled-fg: #5C616F;
+  --disabled-bg: #11192B;   /* derivado: sobre fondo oscuro de Atalaya */
+  --overlay: rgba(4, 8, 20, 0.65);
+
+  /* ---- Tipografía ---- */
+  --font-display: 'Syne', sans-serif;     /* wordmark + headings */
+  --font-body: 'Inter', sans-serif;       /* body + UI */
+  /* Atalaya no usa fuente monoespaciada por ahora. */
+
+  /* Escala tipográfica: mismos tamaños que Brana; pesos ajustados a Syne */
+  --display-size: 64px; --display-lh: 1.05; --display-ls: -0.03em; --display-w: 800;
+  --h1-size: 48px;      --h1-lh: 1.08;      --h1-ls: -0.025em;     --h1-w: 800;
+  --h2-size: 32px;      --h2-lh: 1.15;      --h2-ls: -0.02em;      --h2-w: 700;
+  --h3-size: 24px;      --h3-lh: 1.25;      --h3-ls: -0.015em;     --h3-w: 700;
+  --h4-size: 18px;      --h4-lh: 1.35;      --h4-ls: -0.01em;      --h4-w: 600;
+  --body-lg-size: 18px; --body-lg-lh: 1.6;
+  --body-size: 16px;    --body-lh: 1.6;
+  --small-size: 14px;   --small-lh: 1.5;
+  --caption-size: 12.5px; --caption-lh: 1.4;
+  --btn-size: 15px;     --btn-sm-size: 13.5px;
+  --label-size: 12px;   --label-ls: 0.08em;
+  --data-size: 13px;
+
+  /* ---- Espaciado (base 4px) — idéntico a Brana ---- */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+
+  /* ---- Radios — idénticos a Brana ---- */
+  --r-sm: 4px;     /* badges, chips */
+  --r-md: 6px;     /* botones, inputs */
+  --r-lg: 10px;    /* cards, modales */
+  --r-full: 999px; /* pills, avatares */
+
+  /* ---- Elevación (afinada para el fondo oscuro de Atalaya) ---- */
+  --e1: 0 1px 2px rgba(0, 0, 0, 0.50), 0 0 0 1px var(--border);
+  --e2: 0 4px 14px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--border);
+  --e3: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--border-strong);
+  --e-accent: 0 0 0 1px var(--accent-border), 0 8px 24px rgba(26, 122, 94, 0.18);
+}
