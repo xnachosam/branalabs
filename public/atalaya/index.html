@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/atalaya/atalaya-tokens.css">
+<link rel="stylesheet" href="atalaya-tokens.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -905,13 +905,13 @@ form.addEventListener("submit", ev => {
   if(!rp) ok = false;
   if(!ok){ form.querySelector(".bad,.f-err.on")?.closest(".field")?.scrollIntoView({behavior:"smooth",block:"center"}); return; }
   const data = Object.fromEntries(new FormData(form).entries());
-  /* CONECTAR WEBHOOK AQUÍ:
-     fetch("https://TU-ENDPOINT", {
-       method: "POST",
-       headers: { "Content-Type": "application/json" },
-       body: JSON.stringify(data)
-     });
-  */
+  fetch("https://hook.us2.make.com/vodd1qgb4f8nkoc8yfi6cscnq4bascyc", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(() => { /* éxito ya manejado */ })
+  .catch(() => { /* error ya manejado */ });
   console.log("Lead:", data);
   form.style.display = "none";
   sm.classList.add("on");
