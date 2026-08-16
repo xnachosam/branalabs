@@ -905,7 +905,7 @@ form.addEventListener("submit", ev => {
   if(!rp) ok = false;
   if(!ok){ form.querySelector(".bad,.f-err.on")?.closest(".field")?.scrollIntoView({behavior:"smooth",block:"center"}); return; }
   const data = Object.fromEntries(new FormData(form).entries());
-  fetch("https://hook.us2.make.com/vodd1qgb4f8nkoc8yfi6cscnq4bascyc", {
+  fetch("https://hook.us2.make.com/voddlqgb4f8nkoc8yfi6cscnq4bascyc", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
