@@ -60,6 +60,23 @@ Secciones: Hero (mockup + float chip) · Proof strip (aseguradoras) · Pain (tim
 
 Decisiones de diseño: nav con scroll-spy; logo = botón de inicio (`#top`); hero grid `50% 1fr` con `align-items: start` y `gap: 48px`; float chip absoluto en desktop y relativo en ≤ 960px; radios con `margin-left: 20px` en el span (no `gap`). Mobile: `100svh`, `-webkit-mask-image`, `-webkit-appearance: none`, `touch-action: manipulation`, meta `theme-color`.
 
+## Modo de operación (Claude administra el proyecto)
+
+La sesión principal es el **orquestador**: planifica, delega, verifica, commitea y reporta. El dueño solo toma las decisiones importantes.
+
+Al empezar cada sesión: leer `docs/BACKLOG.md`, `docs/DECISIONES.md` y lo último de `docs/BITACORA.md`, y retomar desde ahí.
+
+**Agentes** (`.claude/agents/`):
+- `web-dev`: implementa código en los sitios. No commitea.
+- `qa-reviewer`: revisa cada cambio antes de publicarlo. Solo lectura. Su veredicto es obligatorio antes de pushear a `main`.
+- `copy-marca`: textos visibles al público, con el tono de marca. No commitea.
+
+**Ciclo por tarea:** tomar tarea del backlog → delegar a `web-dev`/`copy-marca` → `qa-reviewer` revisa → el orquestador verifica → commit → push → actualizar BACKLOG y BITACORA (en el mismo commit o el siguiente).
+
+**Decide el orquestador solo:** arreglos de bugs, performance, accesibilidad, SEO técnico, limpieza de código, refactors sin cambio visual, orden del backlog.
+
+**Va a `docs/DECISIONES.md` y se espera al dueño:** cambios de copy que alteren el posicionamiento (titulares, promesas, precios), cambios visuales de diseño, temas legales, cuentas o servicios externos (Vercel, Make, dominios, analytics), costos, y cualquier borrado difícil de deshacer (ramas remotas, historial). Cada decisión lleva una recomendación. Mientras tanto se sigue con lo que no esté bloqueado.
+
 ## Flujo de git
 
 - Todo cambio se commitea y se pushea (el usuario quiere todo trackeado).
