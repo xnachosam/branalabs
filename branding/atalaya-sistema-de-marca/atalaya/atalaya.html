@@ -794,6 +794,7 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
             </select>
             <div id="otro-wrap" style="display:none; margin-top:10px;">
               <input class="ctrl" type="text" name="herramienta_otro" id="herramienta_otro" aria-label="Qué herramienta usás" placeholder="Contanos qué usás…">
+              <div class="f-err" id="otro-err">Contanos qué herramienta usás.</div>
             </div>
             <div class="f-err">Elegí una opción.</div>
           </div>
@@ -836,7 +837,7 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
             <input type="text" name="website" id="f-website" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="btn-send">Enviar mis respuestas →</button>
-          <div class="send-err" id="send-err" role="alert">No pudimos enviar tus respuestas. Probá de nuevo en un momento o escribinos a hola@branalabs.com.</div>
+          <div class="send-err" id="send-err" role="alert"></div>
           <p class="form-note">No te vamos a mandar spam. Te avisamos cuando esté listo y nada más.</p>
         </form>
         <div class="success-msg" id="sm">
@@ -899,10 +900,11 @@ const sm = document.getElementById("sm");
 const sendBtn = form.querySelector(".btn-send");
 const sendErr = document.getElementById("send-err");
 const sendLabel = sendBtn.textContent;
+const SEND_ERR_TXT = "No pudimos enviar tus respuestas. Probá de nuevo en un momento o escribinos a hola@branalabs.com.";
 let sending = false;
 function setErr(field, show) {
-  const err = field.querySelector(".f-err");
-  const ctrl = field.querySelector(".ctrl");
+  const err = field.querySelector(":scope > .f-err");
+  const ctrl = field.querySelector(":scope > .ctrl");
   if(err) err.classList.toggle("on", show);
   if(ctrl) ctrl.classList.toggle("bad", show);
 }
@@ -910,7 +912,10 @@ form.addEventListener("submit", ev => {
   ev.preventDefault(); let ok = true;
   form.querySelectorAll(".ctrl[required]").forEach(c => {
     const bad = !c.value.trim();
-    setErr(c.closest(".field"), bad);
+    if(c.id === "herramienta_otro") {
+      c.classList.toggle("bad", bad);
+      document.getElementById("otro-err").classList.toggle("on", bad);
+    } else setErr(c.closest(".field"), bad);
     if(bad) ok = false;
   });
   const rf = form.querySelector('input[name="perdida"]').closest(".field");
@@ -921,6 +926,7 @@ form.addEventListener("submit", ev => {
   if(sending) return;
   sending = true;
   sendErr.classList.remove("on");
+  sendErr.textContent = "";
   sendBtn.disabled = true;
   sendBtn.textContent = "Enviando…";
   const data = Object.fromEntries(new FormData(form).entries());
@@ -944,12 +950,17 @@ form.addEventListener("submit", ev => {
     sending = false;
     sendBtn.disabled = false;
     sendBtn.textContent = sendLabel;
+    sendErr.textContent = SEND_ERR_TXT;
     sendErr.classList.add("on");
   });
 });
 form.querySelectorAll(".ctrl").forEach(c => {
-  c.addEventListener("input", () => setErr(c.closest(".field"), false));
-  c.addEventListener("change", () => setErr(c.closest(".field"), false));
+  const clear = () => {
+    if(c.id === "herramienta_otro") { c.classList.remove("bad"); document.getElementById("otro-err").classList.remove("on"); }
+    else setErr(c.closest(".field"), false);
+  };
+  c.addEventListener("input", clear);
+  c.addEventListener("change", clear);
 });
 form.querySelectorAll('input[name="perdida"]').forEach(r => {
   r.addEventListener("change", () => r.closest(".field").querySelector(".f-err").classList.remove("on"));
