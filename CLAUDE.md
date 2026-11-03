@@ -1,66 +1,50 @@
-# Vigente — Landing Page
+# Brana Labs — sitios web + sistemas de marca
 
-Landing page de captura de leads para **Vigente**, un SaaS para brokers y productores asesores de seguros (PAS) independientes en Argentina.
+Repo de **Brana** (empresa de software para industrias concretas, Santa Fe, Argentina) y su primer producto, **Atalaya** (SaaS para brokers y productores asesores de seguros — PAS — independientes). Antes el producto se llamaba "Vigente"; todo lo que diga Vigente es legacy.
 
-## Estructura del proyecto
+Repo: `github.com/xnachosam/branalabs` · Deploy: **Vercel**, sirve la carpeta `public/` (`vercel.json → outputDirectory: public`). Cada push a `main` despliega a producción.
+
+## Estructura
 
 ```
-branding/
-  brana-sistema-de-marca/        ← sistema de marca Brana "Estrato"
-    css/brana-tokens.css
-    css/brana-ui.css
-    Brana - Sistema de marca.html
-  brana-web-design/
-    branalabs-standalone.html    ← sitio web branalabs.com (HTML + CSS + JS)
-    css/brana-tokens.css
-    css/brana-ui.css
-  brana-social-design/
-    Brana Social Kit.html        ← specimens de redes sociales
-  atalaya-sistema-de-marca/
-    atalaya/
-      atalaya.html               ← landing de Atalaya (HTML + CSS + JS)
-      atalaya-tokens.css
-      atalaya-ui.css
-      atalaya-guidelines.html
-  prompts/                       ← briefs para Claude Code y Claude Design
-CLAUDE.md
+public/                          ← LO QUE SE PUBLICA (producción)
+  index.html                     ← branalabs.com  (copia de branding/brana-web-design/branalabs-standalone.html)
+  favicon.svg
+  atalaya/
+    index.html                   ← branalabs.com/atalaya  (copia de atalaya.html con rutas absolutas /atalaya/...)
+    atalaya-tokens.css
+    atalaya-ui.css               ← (no está linkeado desde index.html)
+    atalaya-favicon.svg
+branding/                        ← fuentes de diseño (Claude Design) y briefs
+  brana-sistema-de-marca/        ← sistema de marca Brana "Estrato" (tokens, UI, guidelines, JSX del canvas)
+  brana-web-design/              ← fuente del sitio Brana (standalone bundle) + tweaks-panel.jsx
+  brana-social-design/           ← kit de redes
+  atalaya-sistema-de-marca/atalaya/  ← fuente de la landing Atalaya + tokens/UI/guidelines
+  prompts/                       ← briefs para Claude Code / Claude Design
+  favicon.svg, atalaya-favicon.svg
+vercel.json
 ```
 
-No hay build system, bundler ni dependencias locales. Para ver cada archivo: abrirlo directamente en el navegador.
+No hay build system ni dependencias. Se abre cada HTML directo en el navegador.
 
-## Qué hace la página
+**Duplicación a tener en cuenta:** los HTML de `public/` son copias de los de `branding/`. Cualquier cambio en un sitio hay que hacerlo en ambos lados (o, mejor, definir `public/` como única fuente — ver pendientes). Los `uploads/` de cada carpeta de branding son copias idénticas de los CSS/prompts originales.
 
-1. **Hero** — propuesta de valor principal con mockup animado de la app
-2. **Proof strip** — aseguradoras con las que trabajan los usuarios target
-3. **Pain section** — timeline de "cómo se pierde una renovación hoy"
-4. **Statement** — párrafo de posicionamiento de marca
-5. **Features** — grilla de funcionalidades (Core + Próximamente)
-6. **Form** — formulario de investigación / waitlist (lead generation)
-7. **Footer**
+## Sitio Brana (`public/index.html`)
 
-## Sistema de diseño
+- Es un **export "standalone" de Claude Design**: el HTML real está serializado como JSON dentro de `<script type="__bundler/template">`, y fuentes + scripts van en base64/gzip en `__bundler/manifest`. Se desempaqueta en el navegador.
+- Incluye React (dev) + ReactDOM (dev) + Babel standalone (~4 MB) **solo para el panel "Tweaks"** de revisión de diseño. El sitio en sí es HTML/CSS/JS vanilla.
+- Editar este archivo a mano es frágil (JSON escapado). Para cambios de contenido, editar el template con cuidado o migrar a HTML plano.
+- Secciones: Nav · Hero · Enfoque · Productos (Atalaya + próximo) · Nosotros · Contacto (form) · Footer. Tema claro/oscuro persistente en `localStorage` (`brana-theme`).
+- Tokens: fondo `#0B0C10`, acento índigo `#6A5BEA`. Fuentes: Space Grotesk (display), Hanken Grotesk (cuerpo), IBM Plex Mono (labels).
+- Form `#contactForm` (name, email, message) → webhook Make.com (`hook.us2.make.com/7n9i…`).
 
-| Token | Valor |
-|---|---|
-| Background principal | `#080E1C` |
-| Background secciones dark | `#060B18` |
-| Verde primario | `#1A7A5E` |
-| Verde claro / acento | `#3db897` |
-| Fuente headings | Syne 700/800 (Google Fonts) |
-| Fuente cuerpo | Inter 400/500/600 (Google Fonts) |
+## Landing Atalaya (`public/atalaya/index.html`)
 
-## Form / webhook
+Secciones: Hero (mockup + float chip) · Proof strip (aseguradoras) · Pain (timeline) · Statement · Features (Core + Próximamente) · Form de investigación/waitlist · Footer ("Powered by Brana").
 
-El formulario envía los datos a un endpoint que **todavía no está conectado**. Para conectarlo, buscar el comentario en el JS:
-
-```js
-/* CONECTAR WEBHOOK AQUÍ:
-fetch("https://TU-ENDPOINT", { method:"POST", ... }); */
-```
-
-Reemplazar con el endpoint real (Make, Zapier, n8n, etc.).
-
-## Campos del formulario
+- Tokens en `atalaya-tokens.css`: fondo `#080E1C`, verde `#1A7A5E` / `#3db897`. Fuentes Syne 700/800 + Inter 400/500/600 (Google Fonts).
+- Nombre inyectado por JS: `const BRAND = "Atalaya";` sobre `[data-brand]`.
+- Form `#lf` → webhook Make.com (`hook.us2.make.com/vodd…`), envía JSON con los campos:
 
 | Campo | Tipo | Requerido |
 |---|---|---|
@@ -74,28 +58,10 @@ Reemplazar con el endpoint real (Make, Zapier, n8n, etc.).
 | nombre | text | sí |
 | contacto | text | sí |
 
-## Decisiones de diseño relevantes
+Decisiones de diseño: nav con scroll-spy; logo = botón de inicio (`#top`); hero grid `50% 1fr` con `align-items: start` y `gap: 48px`; float chip absoluto en desktop y relativo en ≤ 960px; radios con `margin-left: 20px` en el span (no `gap`). Mobile: `100svh`, `-webkit-mask-image`, `-webkit-appearance: none`, `touch-action: manipulation`, meta `theme-color`.
 
-- **Nav scroll-spy**: el link activo se actualiza dinámicamente según la sección visible. El logo actúa como botón de inicio (`href="#top"`). "Inicio" fue eliminado del menú por ser redundante en una landing.
-- **Hero layout**: grid `50% 1fr` con `align-items: start` para evitar que el título se solape visualmente con el mockup. `gap: 48px` de separación entre columnas.
-- **Float chip**: en desktop es `position: absolute` animado. En mobile (≤ 960px) pasa a `position: relative` para no cortarse al apilarse en columna única.
-- **Radio buttons**: el espaciado entre el círculo y el texto se maneja con `margin-left: 20px` en el span (no con `gap`) por compatibilidad con labels en algunos browsers.
+## Flujo de git
 
-## Compatibilidad mobile
-
-- `min-height: 100svh` en el hero (fix barra de Safari iOS)
-- `-webkit-mask-image` en la grilla decorativa del hero
-- `-webkit-appearance: none` en inputs y selects
-- `touch-action: manipulation` en botones (elimina delay 300ms en iOS)
-- `theme-color` meta para status bar en Android/iOS
-
-## Brand name
-
-El nombre de marca se inyecta dinámicamente desde JS:
-
-```js
-const BRAND = "Vigente";
-document.querySelectorAll("[data-brand]").forEach(el => el.textContent = BRAND);
-```
-
-Para cambiar el nombre, modificar solo esa línea.
+- Todo cambio se commitea y se pushea (el usuario quiere todo trackeado).
+- Trabajar en `main` o en una rama corta por tema que se mergea a `main`. Push a `main` = deploy a producción en Vercel; push a otra rama = preview URL.
+- Commits en español, estilo `feat:` / `fix:` / `docs:` / `chore:`.
