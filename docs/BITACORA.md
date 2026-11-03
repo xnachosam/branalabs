@@ -7,6 +7,13 @@ Tipos: `cambio`, `análisis`, `decisión`, `incidente`, `deploy`.
 
 ---
 
+### 2026-11-02 · cambio — Formularios por /api/lead + sitio Brana liviano (rama `feat/forms-proxy`)
+- **Endpoint `/api/lead`** (`api/lead.js`, commit `03ba62a`, ya en producción): recibe los dos formularios y los reenvía a Make. Honeypot antispam, valida campos, descarta campos desconocidos, agrega `sitio`, `fecha`, UTM y página de origen. Las URLs de Make salen del código y pasan a variables de entorno de Vercel (el sistema de permisos frenó el primer intento por tenerlas escritas en el código, y es lo correcto). Probado en producción: GET → 405, honeypot → descartado.
+- **Sitio Brana a HTML plano** (`3457915`, agente web-dev): 1.6 MB → 49 KB + 152 KB de fuentes propias. Sin React/Babel/Tweaks. Mismo markup de contenido.
+- **Formulario Atalaya** (`45919b5`): éxito solo si el envío se confirma, error visible con reintento, sin doble envío, sin `console.log`. Labels accesibles. Analytics en los dos sitios.
+- **Ramas viejas** `feat/vercel-deploy-*` borradas (D3). **Titular** "pierdas" corregido (`c4b28ff`, D1).
+- Estado: rama en revisión de QA. **No se mergea a main hasta que el dueño cargue las variables de entorno (D6)**, porque sin ellas los formularios fallarían.
+
 ### 2026-11-02 · cambio — Sistema de gestión con agentes
 - Se crearon los agentes `web-dev`, `qa-reviewer` y `copy-marca` en `.claude/agents/`.
 - Se crearon `docs/BITACORA.md`, `docs/BACKLOG.md` y `docs/DECISIONES.md`.
