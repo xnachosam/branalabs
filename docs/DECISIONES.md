@@ -4,6 +4,15 @@ Solo lo que tiene que decidir el dueño del proyecto. Cada una lleva la recomend
 
 ## Pendientes
 
+### D6 — Cargar las URLs de Make en Vercel (acción tuya, ~3 min) ⚠️ bloquea el deploy de los formularios
+Vercel → proyecto branalabs → Settings → Environment Variables → agregar dos variables (entorno: Production y Preview):
+- `MAKE_WEBHOOK_ATALAYA` = la URL del webhook de Atalaya (la que empieza con `https://hook.us2.make.com/vodd…`; está en Make, o en `public/atalaya/index.html` de `main`).
+- `MAKE_WEBHOOK_BRANA` = la URL del webhook de Brana (`https://hook.us2.make.com/7n9i…`).
+Después avisame y hago el deploy y la prueba.
+
+### D7 — Activar Vercel Web Analytics (acción tuya, 1 min)
+Vercel → proyecto branalabs → Analytics → Enable. El código ya está listo.
+
 ### D5b — Dónde se guardan los leads
 Hoy los formularios mandan los datos a Make.com y no sabemos dónde terminan. Hay que definirlo para la política de privacidad y para no perder leads. Opciones a evaluar juntos: Google Sheets (lo más simple), un CRM (HubSpot free, Notion) o una base propia.
 
