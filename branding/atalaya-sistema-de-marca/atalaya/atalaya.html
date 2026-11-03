@@ -512,6 +512,10 @@ select.ctrl option { background: var(--surface); }
   margin-top: 6px; position: relative; z-index: 1;
 }
 .btn-send:hover { background: #1f9370; transform: translateY(-2px); box-shadow: 0 0 52px rgba(31,147,112,.4); }
+.btn-send:disabled { opacity: .6; cursor: wait; transform: none; box-shadow: none; }
+.send-err { display: none; margin-top: 12px; padding: 10px 14px; border-radius: var(--r-sm); font-size: 12.5px; line-height: 1.5; color: #E2614C; background: rgba(226,97,76,.08); border: 1px solid rgba(226,97,76,.22); text-align: center; }
+.send-err.on { display: block; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-note { text-align: center; font-size: 11.5px; color: rgba(255,255,255,.2); margin-top: 13px; }
 
 .success-msg { display: none; text-align: center; padding: 34px 0; }
@@ -613,11 +617,11 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
     <a href="#form">Contacto</a>
   </div>
   <a href="#form" class="nav-cta">Quiero probarlo</a>
-  <button class="nav-menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <button class="nav-menu-btn" id="menuBtn" aria-label="Abrir menú" aria-controls="drawer">☰</button>
 </nav>
 
 <div class="drawer" id="drawer">
-  <button class="drawer-close" id="drawerClose">✕</button>
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">✕</button>
   <a href="#features" data-close>Beneficios</a>
   <a href="#form" data-close>Contacto</a>
   <a href="#form" class="nav-cta" data-close>Quiero probarlo</a>
@@ -757,8 +761,8 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
       <div class="form-card rv">
         <form id="lf" novalidate>
           <div class="field">
-            <label>¿Sos broker o productor asesor de seguros (PAS)? <span class="req">*</span></label>
-            <select class="ctrl" name="perfil" required>
+            <label for="f-perfil">¿Sos broker o productor asesor de seguros (PAS)? <span class="req">*</span></label>
+            <select class="ctrl" name="perfil" id="f-perfil" required>
               <option value="">Elegí una opción…</option>
               <option>Broker independiente</option>
               <option>Productor Asesor de Seguros (PAS)</option>
@@ -768,8 +772,8 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
             <div class="f-err">Elegí tu perfil.</div>
           </div>
           <div class="field">
-            <label>¿Cuántos clientes activos tenés? <span class="req">*</span></label>
-            <select class="ctrl" name="clientes" required>
+            <label for="f-clientes">¿Cuántos clientes activos tenés? <span class="req">*</span></label>
+            <select class="ctrl" name="clientes" id="f-clientes" required>
               <option value="">Elegí una opción…</option>
               <option>Menos de 50</option>
               <option>50 – 150</option>
@@ -779,7 +783,7 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
             <div class="f-err">Elegí una opción.</div>
           </div>
           <div class="field">
-            <label>¿Cómo manejás hoy la info de clientes y pólizas? <span class="req">*</span></label>
+            <label for="sel-herramienta">¿Cómo manejás hoy la info de clientes y pólizas? <span class="req">*</span></label>
             <select class="ctrl" name="herramienta" required id="sel-herramienta">
               <option value="">Elegí una opción…</option>
               <option>Excel / planillas</option>
@@ -789,13 +793,13 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
               <option value="Otro">Otro</option>
             </select>
             <div id="otro-wrap" style="display:none; margin-top:10px;">
-              <input class="ctrl" type="text" name="herramienta_otro" id="herramienta_otro" placeholder="Contanos qué usás…">
+              <input class="ctrl" type="text" name="herramienta_otro" id="herramienta_otro" aria-label="Qué herramienta usás" placeholder="Contanos qué usás…">
             </div>
             <div class="f-err">Elegí una opción.</div>
           </div>
           <div class="field">
-            <label>¿Perdiste alguna renovación por no avisar a tiempo? <span class="req">*</span></label>
-            <div class="radio-group">
+            <label id="l-perdida">¿Perdiste alguna renovación por no avisar a tiempo? <span class="req">*</span></label>
+            <div class="radio-group" role="radiogroup" aria-labelledby="l-perdida">
               <label class="radio-row"><input type="radio" name="perdida" value="seguido"><span>Sí, me pasa seguido</span></label>
               <label class="radio-row"><input type="radio" name="perdida" value="alguna"><span>Sí, alguna vez</span></label>
               <label class="radio-row"><input type="radio" name="perdida" value="no"><span>No, tengo un sistema</span></label>
@@ -803,12 +807,12 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
             <div class="f-err">Marcá una opción.</div>
           </div>
           <div class="field">
-            <label>¿Qué te falta que ninguna herramienta hoy te da?</label>
-            <textarea class="ctrl" name="falta" placeholder="Escribí libremente…"></textarea>
+            <label for="f-falta">¿Qué te falta que ninguna herramienta hoy te da?</label>
+            <textarea class="ctrl" name="falta" id="f-falta" placeholder="Escribí libremente…"></textarea>
           </div>
           <div class="field">
-            <label>¿Cuánto pagarías por mes?</label>
-            <select class="ctrl" name="precio">
+            <label for="f-precio">¿Cuánto pagarías por mes?</label>
+            <select class="ctrl" name="precio" id="f-precio">
               <option value="">Elegí una opción…</option>
               <option>Menos de $10.000</option>
               <option>$10.000 – $20.000</option>
@@ -818,16 +822,21 @@ footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.05); }
             </select>
           </div>
           <div class="field">
-            <label>Tu nombre <span class="req">*</span></label>
-            <input class="ctrl" name="nombre" type="text" placeholder="Nombre y apellido" required>
+            <label for="f-nombre">Tu nombre <span class="req">*</span></label>
+            <input class="ctrl" name="nombre" id="f-nombre" type="text" autocomplete="name" placeholder="Nombre y apellido" required>
             <div class="f-err">Necesitamos tu nombre.</div>
           </div>
           <div class="field">
-            <label>WhatsApp o email <span class="req">*</span></label>
-            <input class="ctrl" name="contacto" type="text" placeholder="+54 9 11 … o tu@email.com" required>
+            <label for="f-contacto">WhatsApp o email <span class="req">*</span></label>
+            <input class="ctrl" name="contacto" id="f-contacto" type="text" placeholder="+54 9 11 … o tu@email.com" required>
             <div class="f-err">Dejanos un contacto.</div>
           </div>
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">No completar</label>
+            <input type="text" name="website" id="f-website" tabindex="-1" autocomplete="off">
+          </div>
           <button type="submit" class="btn-send">Enviar mis respuestas →</button>
+          <div class="send-err" id="send-err" role="alert">No pudimos enviar tus respuestas. Probá de nuevo en un momento o escribinos a hola@branalabs.com.</div>
           <p class="form-note">No te vamos a mandar spam. Te avisamos cuando esté listo y nada más.</p>
         </form>
         <div class="success-msg" id="sm">
@@ -887,6 +896,10 @@ setTimeout(() => rvEls.forEach(el => { el.style.transition="none"; el.classList.
 
 const form = document.getElementById("lf");
 const sm = document.getElementById("sm");
+const sendBtn = form.querySelector(".btn-send");
+const sendErr = document.getElementById("send-err");
+const sendLabel = sendBtn.textContent;
+let sending = false;
 function setErr(field, show) {
   const err = field.querySelector(".f-err");
   const ctrl = field.querySelector(".ctrl");
@@ -905,18 +918,34 @@ form.addEventListener("submit", ev => {
   rf.querySelector(".f-err").classList.toggle("on", !rp);
   if(!rp) ok = false;
   if(!ok){ form.querySelector(".bad,.f-err.on")?.closest(".field")?.scrollIntoView({behavior:"smooth",block:"center"}); return; }
+  if(sending) return;
+  sending = true;
+  sendErr.classList.remove("on");
+  sendBtn.disabled = true;
+  sendBtn.textContent = "Enviando…";
   const data = Object.fromEntries(new FormData(form).entries());
-  fetch("https://hook.us2.make.com/voddlqgb4f8nkoc8yfi6cscnq4bascyc", {
+  const qs = new URLSearchParams(location.search);
+  ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(k => { if(qs.get(k)) data[k] = qs.get(k); });
+  data.site = "atalaya";
+  data.pagina = location.pathname;
+  data.referrer = document.referrer;
+  fetch("/api/lead", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
-  .then(() => { /* éxito ya manejado */ })
-  .catch(() => { /* error ya manejado */ });
-  console.log("Lead:", data);
-  form.style.display = "none";
-  sm.classList.add("on");
-  sm.scrollIntoView({behavior:"smooth",block:"center"});
+  .then(r => r.json().catch(() => ({})).then(j => { if(!r.ok || !j.ok) throw new Error(j.error || r.status); }))
+  .then(() => {
+    form.style.display = "none";
+    sm.classList.add("on");
+    sm.scrollIntoView({behavior:"smooth",block:"center"});
+  })
+  .catch(() => {
+    sending = false;
+    sendBtn.disabled = false;
+    sendBtn.textContent = sendLabel;
+    sendErr.classList.add("on");
+  });
 });
 form.querySelectorAll(".ctrl").forEach(c => {
   c.addEventListener("input", () => setErr(c.closest(".field"), false));
@@ -939,5 +968,6 @@ if(selHerramienta) {
   });
 }
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
