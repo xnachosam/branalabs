@@ -4,11 +4,14 @@ Solo lo que tiene que decidir el dueño del proyecto. Cada una lleva la recomend
 
 ## Pendientes
 
-### D6 — Cargar las URLs de Make en Vercel (acción tuya, ~3 min) ⚠️ bloquea el deploy de los formularios
-Vercel → proyecto branalabs → Settings → Environment Variables → agregar dos variables (entorno: Production y Preview):
-- `MAKE_WEBHOOK_ATALAYA` = la URL del webhook de Atalaya (la que empieza con `https://hook.us2.make.com/vodd…`; está en Make, o en `public/atalaya/index.html` de `main`).
-- `MAKE_WEBHOOK_BRANA` = la URL del webhook de Brana (`https://hook.us2.make.com/7n9i…`).
-Después avisame y hago el deploy y la prueba.
+### D6 — Webhooks de Make: generar URLs nuevas y cargarlas en Vercel (acción tuya, ~10 min) ⚠️ bloquea el deploy de los formularios
+Las URLs actuales estuvieron públicas en el HTML y quedan en el historial de git: cualquiera puede mandarles datos basura salteando el antispam. Para que la protección sirva:
+1. **Recomendado:** en Make, en cada escenario (Brana y Atalaya), abrí el módulo Webhook → "Add" para crear un webhook nuevo → copiá la URL nueva. Si Make pide "Redetermine data structure", hacelo después del primer envío de prueba (lo hago yo). Borrá el webhook viejo cuando confirmemos que el nuevo anda.
+   _Alternativa rápida:_ usar las URLs actuales (`vodd…` y `7n9i…`) y rotarlas más adelante.
+2. En Vercel → proyecto branalabs → Settings → Environment Variables, agregá (marcando Production y Preview):
+   - `MAKE_WEBHOOK_ATALAYA` = URL del webhook de Atalaya
+   - `MAKE_WEBHOOK_BRANA` = URL del webhook de Brana
+3. Avisame: mergeo a main, hago un envío de prueba real a cada formulario (nombre "Prueba Claude") y verifico que llegue.
 
 ### D7 — Activar Vercel Web Analytics (acción tuya, 1 min)
 Vercel → proyecto branalabs → Analytics → Enable. El código ya está listo.
