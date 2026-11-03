@@ -7,6 +7,12 @@ Tipos: `cambio`, `análisis`, `decisión`, `incidente`, `deploy`.
 
 ---
 
+### 2026-11-02 · cambio — QA aprobó `feat/forms-proxy`
+- Veredicto de qa-reviewer: **APROBADO**, sin bloqueantes. Verificó migración de Brana idéntica (CSS + markup), fuentes con md5 igual al original, contrato cliente↔`/api/lead`, accesibilidad y paridad public/branding.
+- Menores corregidos (`a40e7c0`): el error de "Otro" ahora aparece en su propio campo; el mensaje de error de envío se inyecta al mostrarse para que lo anuncien los lectores de pantalla.
+- Menores aceptados: si Make tarda >10 s puede llegar un lead duplicado tras un reintento (no se pierde nada); si un autocompletado llenara el honeypot, el lead se descarta (revisar si baja el volumen).
+- Hallazgo de seguridad pasado al dueño: las URLs viejas de Make son públicas → rotarlas (D6).
+
 ### 2026-11-02 · cambio — Formularios por /api/lead + sitio Brana liviano (rama `feat/forms-proxy`)
 - **Endpoint `/api/lead`** (`api/lead.js`, commit `03ba62a`, ya en producción): recibe los dos formularios y los reenvía a Make. Honeypot antispam, valida campos, descarta campos desconocidos, agrega `sitio`, `fecha`, UTM y página de origen. Las URLs de Make salen del código y pasan a variables de entorno de Vercel (el sistema de permisos frenó el primer intento por tenerlas escritas en el código, y es lo correcto). Probado en producción: GET → 405, honeypot → descartado.
 - **Sitio Brana a HTML plano** (`3457915`, agente web-dev): 1.6 MB → 49 KB + 152 KB de fuentes propias. Sin React/Babel/Tweaks. Mismo markup de contenido.
